@@ -7,3 +7,6 @@ dashboard:
     stanford_overview: http://localhost:3000
     schools_and_departments: http://localhost:3000
     individual_researchers: http://localhost:3000
+
+downloads:
+  path: 'spec/fixtures'

@@ -2,3 +2,6 @@ tableau:
   client_id: CLIENT_ID_HERE
   client_secret_id: CLIENT_SECRET_ID_HERE
   client_secret_value: CLIENT_SECRET_VALUE_HERE
+
+downloads:
+  path: 'spec/fixtures'

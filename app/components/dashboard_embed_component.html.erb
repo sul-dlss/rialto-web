@@ -10,6 +10,7 @@
                 <script type='module' src='<%= Settings.tableau.base_url %>/javascripts/api/tableau.embedding.3.latest.min.js'></script>
                 <tableau-viz
                     id='tableau-viz'
+                    class='justify-content-center'
                     src='<%= embed_url %>'
                     <% if token && !Rails.env.local? %> token='<%= token %>'<% end %>
                     toolbar='top'>

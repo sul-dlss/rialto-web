@@ -5,10 +5,10 @@
       <div class="fw-semibold"><%= alert_heading %></div>
       <div>
           <% if current_user %>
-            This dashboard is only available to select users.
+            This <%= type %> is only available to select users.
             If you would like to request access, please email:  <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu' %>.
           <% else %>
-            Log in to access the dashboards available to you. <%= link_to 'Log in', login_path(referrer: request.referer), data: { turbo: false } %>
+            Log in to access the <%= type %>s available to you. <%= link_to 'Log in', login_path(referrer: request.referer || request.fullpath), data: { turbo: false } %>
           <% end %>
       </div>
   </div>

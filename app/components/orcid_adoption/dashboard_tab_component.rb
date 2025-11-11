@@ -17,8 +17,7 @@ module OrcidAdoption
       {
         'overview' => 'Stanford Overview',
         'schools' => 'Schools and Departments',
-        'researchers' => 'Individual Researchers',
-        'download' => 'Download Data'
+        'researchers' => 'Individual Researchers'
       }
     end
   end

@@ -506,6 +506,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   rubocop-rspec
   rubocop-rspec_rails
+  rubyzip
   selenium-webdriver
   simplecov
   solid_cable

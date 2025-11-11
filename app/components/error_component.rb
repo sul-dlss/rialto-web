@@ -4,9 +4,16 @@
 class ErrorComponent < ViewComponent::Base
   delegate :current_user, to: :helpers
 
-  def alert_heading
-    return 'This dashboard is only available to Stanford-affiliated users.' unless current_user
+  def initialize(type: 'dashboard')
+    @type = type
+    super()
+  end
 
-    'This dashboard is only available to select users.'
+  attr_reader :type
+
+  def alert_heading
+    return "This #{type} is only available to Stanford-affiliated users." unless current_user
+
+    "This #{type} is only available to select users."
   end
 end
