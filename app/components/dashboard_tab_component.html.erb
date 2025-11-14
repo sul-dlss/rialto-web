@@ -1,0 +1,23 @@
+<ul class="nav nav-tabs mt-3" id="dashboard-tabs" role="tablist" data-controller="tab-url">
+    <% tabs.each do |tab_slug, tab_data| %>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link <%= 'active' if tab_slug == selected_tab %>"
+                id="<%= "#{tab_slug}-tab" %>" data-bs-toggle="tab"
+                data-bs-target="#<%= "#{tab_slug}-pane" %>" type="button"
+                role="tab" aria-controls="<%= "#{tab_slug}-pane" %>"
+                aria-selected="<%= 'active' if tab_slug == selected_tab %>"
+                data-tab-name="<%= tab_slug %>" data-action="click->tab-url#updateUrl">
+                <%= tab_data['heading'] %>
+            </button>
+        </li>
+    <% end %>
+</ul>
+<div class="tab-content pt-3" id="dashboard-tabs-content">
+    <% tabs.each do |tab_slug, tab_data| %>
+        <div id="<%= tab_slug %>-pane" class="tab-pane fade <%= 'show active' if tab_slug == selected_tab %>" role="tabpanel">
+            <%= helpers.turbo_frame_tag "#{tab_slug}-frame", src: tab_data['url'], loading: 'lazy' do %>
+                <div class="text-muted">Loading <%= tab_data['heading'] %>...</div>
+            <% end %>
+        </div>
+    <% end %>
+</div>

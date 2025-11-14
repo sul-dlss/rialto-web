@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get '/download', to: 'publications#index', as: 'download'
-  get '/download/:set', to: 'publications#download', as: 'download_set',
+  get '/download', to: 'downloads#index', as: 'download'
+  get '/download/:set', to: 'downloads#download', as: 'download_set',
                         constraints: { set: /pubs|author|department|school/ }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/webauth/login', to: 'authentication#login', as: 'login'
@@ -23,9 +23,24 @@ Rails.application.routes.draw do
   root 'home#show'
 
   get 'orcid-adoption', to: 'orcid_adoption#show', as: 'orcid_adoption_dashboard'
-  get 'orcid-adoption/stanford-overview', to: 'orcid_adoption#stanford_overview', as: 'orcid_adoption_stanford_overview'
-  get 'orcid-adoption/schools-and-departments', to: 'orcid_adoption#schools_and_departments',
-                                                as: 'orcid_adoption_schools_and_departments'
-  get 'orcid-adoption/individual-researchers', to: 'orcid_adoption#individual_researchers',
-                                               as: 'orcid_adoption_researchers'
+  get '/orcid_adoption/stanford-overview', to: 'orcid_adoption#stanford_overview',
+                                           as: 'orcid_adoption_stanford_overview'
+  get '/orcid_adoption/department-details', to: 'orcid_adoption#department_details',
+                                            as: 'orcid_adoption_department_details'
+  get '/orcid_adoption/researcher-details', to: 'orcid_adoption#researcher_details',
+                                            as: 'orcid_adoption_researcher_details'
+
+  # open access routes
+  get 'open-access', to: 'open_access#show', as: 'open_access_dashboard'
+  get '/open-access/stanford-overview', to: 'open_access#stanford_overview', as: 'open_access_stanford_overview'
+  get '/open-access/school-overview', to: 'open_access#school_overview', as: 'open_access_school_overview'
+  get '/open-access/school-details', to: 'open_access#school_details', as: 'open_access_school_details'
+  get '/open-access/department-details', to: 'open_access#department_details', as: 'open_access_department_details'
+
+  # publication routes
+  get 'publications', to: 'publications#show', as: 'publications_dashboard'
+  get '/publications/stanford-overview', to: 'publications#stanford_overview', as: 'publications_stanford_overview'
+  get '/publications/type-overview', to: 'publications#type_overview', as: 'publications_type_overview'
+  get '/publications/school-details', to: 'publications#school_details', as: 'publications_school_details'
+  get '/publications/department-details', to: 'publications#department_details', as: 'publications_department_details'
 end

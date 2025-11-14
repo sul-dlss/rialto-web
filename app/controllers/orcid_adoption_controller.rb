@@ -2,40 +2,30 @@
 
 # Controller for the orcid dashboards
 class OrcidAdoptionController < PublicController
-  before_action :require_turbo_frame, except: [:show]
-
-  # main dashboard page, accessible to all users
-  # use tab param to select which tab is active (default is overview)
-  def show
-    @tab = params[:tab] || 'overview'
-  end
-
-  # the stanford overview dashboard embedded view (all users) -
-  # turbo frame loaded only when tab is selected
-  def stanford_overview
-    render DashboardEmbedComponent.new(embed_url: Settings.dashboard.orcid_adoption.stanford_overview,
-                                       turbo_frame_id: 'overview_tab', authorized: true)
-  end
-
-  # the schools and departments dashboard embedded view (stanford users only) -
-  # turbo frame loaded only when tab is selected
-  def schools_and_departments
-    render DashboardEmbedComponent.new(embed_url: Settings.dashboard.orcid_adoption.schools_and_departments,
-                                       turbo_frame_id: 'schools_tab', token:,
-                                       authorized: current_user && allowed_to?(:view?, with: StanfordPolicy))
-  end
-
   # the individual researchers dashboard embedded view (workgroup users only) -
   # turbo frame loaded only when tab is selected
-  def individual_researchers
-    render DashboardEmbedComponent.new(embed_url: Settings.dashboard.orcid_adoption.individual_researchers,
-                                       turbo_frame_id: 'researchers_tab', token:,
-                                       authorized: current_user && allowed_to?(:view?, with: RestrictedPolicy))
+  # This is the only view that is specific to OrcidAdoption,
+  # the rest are defined in PublicController.
+  def researcher_details
+    @tab_key = 'researcher-details'
+    render DashboardEmbedComponent.new(embed_url:,
+                                       turbo_frame_id:, token:,
+                                       authorized: business_access?)
   end
 
-  private
+  def settings_tabs
+    @settings_tabs ||= Settings.tabs.orcid_adoption
+  end
 
-  def token
-    mint_jwt_token if current_user
+  def tab_routes
+    {
+      'stanford-overview' => { 'url' => orcid_adoption_stanford_overview_path },
+      'researcher-details' => { 'url' => orcid_adoption_researcher_details_path },
+      'department-details' => { 'url' => orcid_adoption_department_details_path }
+    }
+  end
+
+  def tableau_group
+    'ORCIDAdoption'
   end
 end
