@@ -1,8 +1,8 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/sul-dlss-labs/rialto-web/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sul-dlss-labs/rialto-web/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/sul-dlss/rialto-web/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sul-dlss/rialto-web/tree/main)
 
-# RIATLO Web App
+# RIALTO Web App
 
-Test RIALTO Web App 2025
+Web application for viewing RIALTO dashboards.
 
 ## Setup
 
