@@ -2,7 +2,7 @@
 
 # RIALTO Web App
 
-Web application for viewing RIALTO dashboards.
+Web application for viewing the RIALTO dashboards.
 
 ## Setup
 
