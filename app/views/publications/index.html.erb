@@ -1,0 +1,72 @@
+<div class="my-3">
+  <% if current_user && allowed_to?(:view?, with: RestrictedPolicy) %>
+    <h1>Downloads</h1>
+    <div>To support Tableau visualizations and custom analyses, the RIALTO team provides several "flattened" (or denormalized) data files. These files consolidate information from multiple database tables into a single file. There are four files available for download below.</div>
+    <div class="my-2">
+      Use <b>Publications</b> for DOI-level reporting, <b>Publications by School</b> for School-level reporting, and <b>Publications by Department</b> for Department-level reporting, and <b>Publications by Author</b> for author-level reporting.
+    </div>
+    <%= link_to Settings.dashboard.help_url, class: 'link-primary text-decoration-underline' do %>
+        <i class="bi bi-box-arrow-up-right me-1"></i> Questions about the datasets? Read the Data Download Documentation
+    <% end %>
+
+    <h2 class="mt-4">Publications</h2>
+    <div>
+      A table where each row is unique by <b>doi</b>.
+    </div>
+    <div>
+      Included fields: <b>academic_council_authored, apc, doi, faculty_authored, federally_funded, open_access, pub_year, types, publisher</b>.
+    </div>
+    <%= render DownloadDatasetComponent.new %>
+
+    <h2 class="mt-4">Publications by school</h2>
+    <div>
+      A table where each row is unique by <b>doi</b> and <b>primary_school</b>.
+    </div>
+    <div>
+      Included fields: <b>academic_council_authored, apc, doi, faculty_authored, federally_funded, open_access, primary_school, pub_year, types.</b>
+    </div>
+    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+      <div class="text-body">
+        <div class="fw-semibold">Do not use for DOI-level publication counts</div>
+        <div>This file is deduplicated by school. If a publication has co-authors from different schools, that publication will appear in multiple rows for different schools, leading to overcounting. For accurate DOI-level reporting, use the <b>Publications</b> dataset.</div>
+      </div>
+    </div>
+    <%= render DownloadDatasetComponent.new(set: 'school') %>
+
+    <h2 class="mt-4">Publications by department</h2>
+    <div>
+      A table where each row is unique by <b>doi</b>, <b>primary_school</b>, and <b>primary_department</b>.
+    </div>
+    <div>
+      Included fields: <b>academic_council_authored, apc, doi, faculty_authored, federally_funded, open_access, primary_department, primary_school, pub_year, types.</b>
+    </div>
+    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+      <div class="text-body">
+        <div class="fw-semibold">Do not use for School-level publication counts</div>
+        <div>This file is deduplicated by department, not school. If a publication has co-authors from different departments within the same school, that school will appear in multiple rows for that single publication, leading to overcounting. For accurate school-level reporting, use the Publications by School dataset.</div>
+      </div>
+    </div>
+    <%= render DownloadDatasetComponent.new(set: 'department') %>
+
+    <h2 class="mt-4">Publications by author</h2>
+    <div>
+      A table where each row is unique by <b>doi</b> and <b>sunet.</b>
+    </div>
+    <div>
+      Included fields: <b>abstract, academic_council, apc, author_list_names, author_list_orcids, citation_count, doi, federally_funded, first_author_name, first_author_orcid, funder_list_grid, funder_list_name, grant_ids, issue, journal_issn, journal_name, open_access, pages, orcid, primary_department, primary_school, pub_year, publisher, role, sunet, title, types, volume.</b>
+    </div>
+    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+      <div class="text-body">
+        <div class="fw-semibold">Do not use for School or Department-level publication counts</div>
+        <div>This file is denormalized by person and should not be used to count publications by department, or school. Doing so will result in significant overcounting.</div>
+      </div>
+    </div>
+    <%= render DownloadDatasetComponent.new(set: 'author') %>
+  <% else %>
+    <%= render ErrorComponent.new(type: 'page') %>
+  <% end %>
+
+</div>

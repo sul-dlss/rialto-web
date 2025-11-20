@@ -10,10 +10,19 @@ class ApplicationController < ActionController::Base
   # See https://actionpolicy.evilmartians.io/#/rails?id=verify_authorized-hooks for how to skip.
   verify_authorized
 
+  rescue_from ActionPolicy::Unauthorized, with: :unauthorized_user
+
+  rescue_from ActionPolicy::AuthorizationContextMissing, with: :unauthorized_user
+
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
 
   private
+
+  def unauthorized_user
+    error = current_user ? 'Unauthorized user' : 'Not logged in'
+    render json: { error: }, status: :unauthorized
+  end
 
   def mint_jwt_token
     @mint_jwt_token ||= JwtService.encode

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get '/download', to: 'publications#index', as: 'download'
+  get '/download/:set', to: 'publications#download', as: 'download_set',
+                        constraints: { set: /pubs|author|department|school/ }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/webauth/login', to: 'authentication#login', as: 'login'
   get '/webauth/logout', to: 'authentication#logout', as: 'logout'
