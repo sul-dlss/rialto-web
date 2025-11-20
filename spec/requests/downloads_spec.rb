@@ -60,6 +60,7 @@ RSpec.describe 'Publications' do
         get '/download'
         expect(response).to have_http_status(:success)
         expect(response.body).to include 'publications_by_department.zip'
+        expect(response.body).to include 'Size: 420 KB (uncompressed)'
         expect(response.body).to include('aria-label="Download publications.zip"')
       end
 
