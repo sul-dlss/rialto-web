@@ -6,6 +6,7 @@ email_suffix: '@stanford.edu'
 # connected app config
 tableau:
   base_url: https://tableau-uat.stanford.edu
+  dashboard_base_path: '/#/site/DLSS/views/'
   # actual secrets are in vault and set by puppet
   client_id: STAGE_CLIENT_ID_HERE
   client_secret_id: STAGE_CLIENT_SECRET_ID_HERE
@@ -14,10 +15,47 @@ tableau:
 
 dashboard:
   help_url: 'https://docs.google.com/document/d/1LohYMtb_AZfTUFDEzovYB0zo-5JBw5i9B8iZSt1feAM/edit?tab=t.0#heading=h.vh65hbsggtq4'
+
+# heading = text that shows up on the tab
+# tableau should be the slug in Tableau
+# the rest of the Tableau url will be created dyamically in the PublicController
+tabs:
+  open_access:
+    stanford-overview: 
+      heading: Stanford Overview
+      tableau: StanfordOverview
+    school-overview: 
+      heading: School Overview
+      tableau: SchoolOverview
+    school-details:
+      heading: School Details
+      tableau: SchoolDetails
+    department-details:
+      heading: Department Details
+      tableau: DepartmentDetails
   orcid_adoption:
-    stanford_overview: https://tableau-uat.stanford.edu/t/DLSS/views/ORCIDAdoption/PublicStanfordOverview
-    schools_and_departments: https://tableau-uat.stanford.edu/t/DLSS/views/ORCIDAdoption/StanfordSchoolsandDepartments
-    individual_researchers: https://tableau-uat.stanford.edu/t/DLSS/views/ORCIDAdoption/BusinessIndividualResearchers
+    stanford-overview:
+      heading: Stanford Overview
+      tableau: StanfordOverview
+    department-details:
+      heading: Department Details
+      tableau: DepartmentDetails
+    researcher-details:
+      heading: Researcher Details
+      tableau: ResearcherDetails
+  publications:
+    stanford-overview:
+      heading: Stanford Overview
+      tableau: StanfordOverview
+    type-overview:
+      heading: Type Overview
+      tableau: TypeOverview
+    school-details:
+      heading: School Details
+      tableau: SchoolDetails
+    department-details: 
+      heading: Department Details
+      tableau: DepartmentDetails
 
 downloads:
   path: '/rialto-data/downloads'
