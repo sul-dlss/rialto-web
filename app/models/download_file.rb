@@ -23,7 +23,7 @@ class DownloadFile
   def size
     zip = Zip::File.open(filepath)
     entry = zip.find_entry(filename.gsub('.zip', '.csv'))
-    (entry.size.to_f / (1024**3)).round(2)
+    entry.size
   end
 
   def last_updated

@@ -25,7 +25,7 @@ class DownloadDatasetComponent < ViewComponent::Base
   end
 
   def file_size
-    tag.div { "Size: #{file.size} GB (uncompressed)" }
+    tag.div { "Size: #{number_to_human_size(file.size)} (uncompressed)" }
   end
 
   def last_updated
