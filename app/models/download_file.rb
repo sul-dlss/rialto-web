@@ -23,7 +23,14 @@ class DownloadFile
   def size
     zip = Zip::File.open(filepath)
     entry = zip.find_entry(filename.gsub('.zip', '.csv'))
-    (entry.size.to_f / (1024**3)).round(2)
+    size = entry.size
+    # for some reason zip gives decimal file size, i.e. 1.53 gb file returns 1533884797
+    # We need to convert the decimal size (1 kb = 1000 bytes)
+    # to binary size size (1 kb = 1024) for number_to_human_size to work
+    # exponent gives the ratio of exponents for our size and 1 kilobyte which tells us our exponent for converted_bytes
+    exponent = (Math.log(size) / Math.log(1000)).floor
+    converted_bytes = size * (1.024**exponent)
+    ActiveSupport::NumberHelper.number_to_human_size(converted_bytes)
   end
 
   def last_updated
