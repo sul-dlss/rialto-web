@@ -24,6 +24,9 @@ AllCops:
     - 'db/**/*'
     - 'vendor/**/*'
     - 'tmp/**/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
 
 Gemspec/AddRuntimeDependency: # new in 1.65
   Enabled: true
