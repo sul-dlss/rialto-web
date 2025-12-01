@@ -79,7 +79,7 @@ RSpec.describe 'Show orcid dashboard pages' do
       within('#department-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This dashboard is only available to Stanford-affiliated users.')
+      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
     end
 
     it 'does not show the orcid dashboard school details viz in tab' do
@@ -87,7 +87,7 @@ RSpec.describe 'Show orcid dashboard pages' do
       within('#school-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This dashboard is only available to Stanford-affiliated users.')
+      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
     end
   end
 end
