@@ -31,7 +31,7 @@ RSpec.describe 'Show orcid dashboard pages' do
 
     it 'does not show the orcid dashboard individual researchers viz in tab' do
       visit orcid_adoption_dashboard_path(tab: 'researcher-details')
-      expect(page).to have_content('This dashboard is only available to select users.')
+      expect(page).to have_content('This page is only available to select users.')
       within('#researcher-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
@@ -73,7 +73,7 @@ RSpec.describe 'Show orcid dashboard pages' do
       within('#department-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This dashboard is only available to Stanford-affiliated users.')
+      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
     end
 
     it 'does not show the orcid dashboard individual researchers viz in tab' do
@@ -81,7 +81,7 @@ RSpec.describe 'Show orcid dashboard pages' do
       within('#researcher-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This dashboard is only available to Stanford-affiliated users.')
+      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
     end
   end
 end
