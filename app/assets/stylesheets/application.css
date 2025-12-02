@@ -15,3 +15,8 @@
   background-size: cover;
   background-position: center;
 }
+
+#tableau-viz {
+  width: 100%;
+  display: block !important;
+}

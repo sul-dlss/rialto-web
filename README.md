@@ -32,12 +32,12 @@ REMOTE_USER=peter rails s
 A logged in user in a single workgroup:
 
 ```
-REMOTE_USER=peter ROLES=sul:rialto rails s
+REMOTE_USER=peter ROLES="sul:rialto" rails s
 ```
 
 A logged in user in multiple workgroup:
 ```
-REMOTE_USER=peter ROLES=sul:rialto;sul:dlss rails s
+REMOTE_USER=peter ROLES="sul:rialto;sul:dlss" rails s
 ```
 
 If you leave off the "REMOTE_USER", you will see the login button, but it won't do anything.
