@@ -111,6 +111,22 @@
                       data-bs-target="#feedback">
                       Feedback</a>
                   </li>
+                  <li class="nav-item dropdown">
+                  <% if helpers.current_user.present? %>
+                    <button
+                      class="nav-link logout-dropdown dropdown-toggle"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
+                      Logged in: <%= Current.user.name || Current.user.sunetid %>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
+                    </ul>
+                  <% else %>
+                    <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
+                  <% end %>
+                </li>
                 </ul>
               </nav>
             </div>
