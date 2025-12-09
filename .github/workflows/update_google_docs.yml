@@ -1,0 +1,39 @@
+name: update_google_docs
+on: 
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update_google_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout new branch
+        run: git checkout -b "update-google-docs"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: harvest Google docs
+        run: bundle exec rake google_docs:harvest
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add app/views/documentation
+          git commit -m "update google docs" -a || echo "no_files=true" >> $GITHUB_OUTPUT
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-google-docs
+      - name: Create Pull Request
+        uses: puppetlabs/peter-evans-create-pull-request@v3
+        if: steps.check.outputs.no_files != 'true'
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: main
+          head: ${{ github.ref_name }}
