@@ -100,6 +100,26 @@
                   <li class="nav-item">
                     <%= link_to 'Downloads', download_path, class: 'nav-link' %>
                   </li>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                    Documentation
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li>
+                        <%= link_to 'ORCID Adoption', documentation_url('orcid-adoption'), class: 'dropdown-item' %>
+                      </li>
+                      <li>
+                        <%= link_to 'Open Access', documentation_url('open-access'), class: 'dropdown-item' %>
+                      </li>
+                        <%= link_to 'Publications', documentation_url('publications'), class: 'dropdown-item' %>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
                 <hr class="d-md-none vw-100 my-0">
                 <ul class="navbar-nav d-md-none gap-0 w-100">

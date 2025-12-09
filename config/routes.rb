@@ -43,4 +43,7 @@ Rails.application.routes.draw do
   get '/publications/type-overview', to: 'publications#type_overview', as: 'publications_type_overview'
   get '/publications/school-details', to: 'publications#school_details', as: 'publications_school_details'
   get '/publications/department-details', to: 'publications#department_details', as: 'publications_department_details'
+
+  get '/documentation/:faq', to: 'documentation#show', as: 'documentation',
+                             constraints: { faq: /#{Settings.docs.keys.join('|')}/ }
 end

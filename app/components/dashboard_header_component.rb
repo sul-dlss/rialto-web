@@ -4,8 +4,9 @@
 class DashboardHeaderComponent < ApplicationComponent
   attr_reader :title
 
-  def initialize(title:)
+  def initialize(title:, help_url:)
     super()
     @title = title
+    @help_url = help_url
   end
 end
