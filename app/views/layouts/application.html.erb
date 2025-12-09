@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || 'RIALTO Web' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,11 +47,12 @@
 
     <%= render HeaderComponent.new %>
 
-    <%= render FlashComponent.new(flash:) %>
-
-    <div class="container mb-auto flex-1 mt-4">
-      <%= yield %>
-    </div>
+    <main id="main-container">
+      <%= render FlashComponent.new(flash:) %>
+      <div class="container mb-auto flex-1 mt-4">
+        <%= yield %>
+      </div>
+    </main>
 
     <%= render FooterComponent.new %>
 
