@@ -40,6 +40,13 @@ REMOTE_USER=peter ROLES=sul:rialto;sul:dlss rails s
 
 If you leave off the "REMOTE_USER", you will see the login button, but it won't do anything.
 
+## Updating Documentation and Data Dictionaries
+To update both documentation and data dictionaries run: `bundle exec rake harvest:all`.
+To update data dictionaries only: `bundle exec rake harvest:data_dictionaries`
+To update the documentation only: `bundle exec rake harvest:google_docs`
+After updating commit the updated files.
+If there are no updated files then everything is up to date.
+
 ## Website Access Levels
 
 There are three base controllers that determine access levels:
