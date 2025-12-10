@@ -22,8 +22,7 @@ jobs:
       - name: harvest Google docs
         run: bundle exec rake google_docs:harvest
       - name: Create Pull Request
-        uses: puppetlabs/peter-evans-create-pull-request@v3
-        if: steps.check.outputs.no_files != 'true'
+        uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
