@@ -21,12 +21,6 @@ jobs:
           bundler-cache: true
       - name: harvest Google docs
         run: bundle exec rake google_docs:harvest
-      - name: commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add app/views/documentation
-          git commit -m "update google docs" -a || echo "no_files=true" >> $GITHUB_OUTPUT
       - name: Create Pull Request
         uses: puppetlabs/peter-evans-create-pull-request@v3
         if: steps.check.outputs.no_files != 'true'
@@ -34,6 +28,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
           branch: update-google-docs
+          commit-message: update google docs
           title: "Automated: update documentation files"
           body: "This PR updates documentation files from Google Docs."
           labels: automated
