@@ -24,7 +24,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           base: main
           branch: update-google-docs
           commit-message: update google docs
