@@ -25,12 +25,6 @@ jobs:
           git config --local user.name "GitHub Action"
           git add app/views/documentation
           git commit -m "update google docs" -a || echo "no_files=true" >> $GITHUB_OUTPUT
-      - name: push changes
-        if: steps.check.outputs.no_files != 'true'
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: update-google-docs
       - name: Create Pull Request
         uses: puppetlabs/peter-evans-create-pull-request@v3
         if: steps.check.outputs.no_files != 'true'
