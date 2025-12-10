@@ -38,3 +38,6 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           base: main
           branch: update-google-docs
+          title: "Automated: update documentation files"
+          body: "This PR updates documentation files from Google Docs."
+          labels: automated
