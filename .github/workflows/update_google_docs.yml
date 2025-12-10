@@ -25,7 +25,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git switch -c update-google-docs
           git add app/views/documentation
           git commit -m "update google docs" -a || echo "no_files=true" >> $GITHUB_OUTPUT
       - name: Create Pull Request
