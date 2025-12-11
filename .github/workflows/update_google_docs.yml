@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  call-ci:
+  CI:
     needs: update_google_docs
     runs-on: ubuntu-latest
     steps:
