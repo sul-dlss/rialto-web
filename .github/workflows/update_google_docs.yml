@@ -32,13 +32,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: update-google-docs
-      - name: Open pull request using gh CLI
-        if: steps.check.outputs.no_files != 'true'
-        run: |
-          gh pr create \
-            --title "Update google docs" \
-            --body "Automated task for updating documentation from google docs" \
-            --base main \
-            --head update-google-docs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
