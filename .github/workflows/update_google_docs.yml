@@ -42,3 +42,13 @@ jobs:
             --head update-google-docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  call-ci:
+    needs: update_google_docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call CI
+        uses: ./.github/workflows/ci.yml
+        with:
+          pr_number: ${{ env.PR_NUMBER }}
+
