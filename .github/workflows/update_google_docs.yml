@@ -36,11 +36,12 @@ jobs:
         if: steps.check.outputs.no_files != 'true'
         id: create_pr
         run: |
-          PR_NUMBER=$(gh pr create \
+          PR_URL=$(gh pr create \
             --title "Update google docs" \
             --body "Automated task for updating documentation from google docs" \
             --base main \
             --head update-google-docs)
+          PR_NUMBER="${PR_URL##*/}"   # bash extracts last segment after /
           echo "::set-output name=number::$PR_NUMBER"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -52,5 +53,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/ci.yml/dispatches \
-            -d '{"ref":"main","inputs":{"pr_url":"${{ steps.create_pr.outputs.number }}"}}'
+            -d '{"ref":"main","inputs":{"pr_number":"${{ steps.create_pr.outputs.number }}"}}'
 
