@@ -7,11 +7,9 @@ on:
   pull_request:
     branches:
       - main
-  workflow_call:
-    inputs:
-      pr_number:
-        required: true
-        type: string
+  workflow_run:
+    workflows: ["update_google_docs"]
+    types: [completed]
 
 jobs:
   tests:
