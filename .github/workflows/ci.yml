@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby: ["3.4"]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Rubocop linter
+        run: bundle exec rubocop
+        if: always()
+      - name: HTML Linter
+        run: bundle exec erb_lint --lint-all --format compact
+        if: always()
+      - name: Rspec tests
+        run: bundle exec rspec
+        if: always()
+      - name: Brakeman
+        run: bin/brakeman
+        if: always()
