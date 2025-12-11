@@ -1,0 +1,57 @@
+<table class="table table-bordered"><thead><tr><th>Field</th>
+<th>Type</th>
+<th>Description</th></tr></thead><tbody><tr><td>id</td>
+<td>Integer</td>
+<td>RIALTO database primary key </td></tr></tbody><tbody><tr><td>doi</td>
+<td>String</td>
+<td>DOI (Digital Object Identifier)</td></tr></tbody><tbody><tr><td>sunet</td>
+<td>String</td>
+<td>SUNet ID of the Stanford author associated with the publication</td></tr></tbody><tbody><tr><td>orcid</td>
+<td>String</td>
+<td>ORCID of the Stanford author associated with the publication</td></tr></tbody><tbody><tr><td>abstract</td>
+<td>String</td>
+<td>Abstract, from OpenAlex, Dimensions, PubMed, or CrossRef</td></tr></tbody><tbody><tr><td>academic_council</td>
+<td>Boolean</td>
+<td>True if author is a member of the Stanford Academic Council</td></tr></tbody><tbody><tr><td>apc</td>
+<td>Integer</td>
+<td>Article Processing Charge, in order of preference: (1) API "paid" price data from OpenAlex (typically comes from OpenAPC, a crowdsourced APC dataset where individual researchers and institutions can add APC data), (2) open dataset of APCs prepared by the ScholCom Lab at Simon Fraser University and available at  https://doi.org/10.7910/DVN/CR1MMV, (3) "list" price from OpenAlex. For any remaining publication, we estimate the APC based on the Open Access category: "Gold"=$2,450; "Hybrid"=$3,600; all other categories = $0.</td></tr></tbody><tbody><tr><td>author_list_names</td>
+<td>String</td>
+<td>Pipe-delimited list of all authors. From, in order of preference: OpenAlex, Dimensions, PubMed, Web of Science, CrossRef, or Stanford University Libraries Publications (SUL-Pub database). </td></tr></tbody><tbody><tr><td>author_list_orcids</td>
+<td>String</td>
+<td>Pipe-delimited list of all authors' ORCIDs available from all of OpenAlex, Dimensions, PubMed, Web of Science, CrossRef, or Stanford University Libraries Publications (SUL-Pub database)</td></tr></tbody><tbody><tr><td>citation_count</td>
+<td>Integer</td>
+<td>Count of references to the publication, taking the highest citation count from OpenAlex, Dimensions, and Web of Science.</td></tr></tbody><tbody><tr><td>federally_funded</td>
+<td>Boolean</td>
+<td>True if at least one of the publication’s funders is federal. Funder data for each publication is provided by Dimensions or OpenAlex, and we use the OSTP Impact dataset, enhanced with ROR identifiers, to identify which funders are federal. </td></tr></tbody><tbody><tr><td>first_author_name</td>
+<td>String</td>
+<td>Author name that appears first on the publication</td></tr></tbody><tbody><tr><td>first_author_orcid</td>
+<td>String</td>
+<td>ORCID, if available, for the first author on the publication</td></tr></tbody><tbody><tr><td>issue</td>
+<td>String</td>
+<td>Issue number for the journal in which the publication appeared</td></tr></tbody><tbody><tr><td>journal_name</td>
+<td>String</td>
+<td>Name of journal which published the publication</td></tr></tbody><tbody><tr><td>last_author_name</td>
+<td>String</td>
+<td>Author name that appears last on the publication</td></tr></tbody><tbody><tr><td>last_author_orcid</td>
+<td>String</td>
+<td>ORCID, if available, for the last author on the publication</td></tr></tbody><tbody><tr><td>open_access</td>
+<td>String</td>
+<td>Open Access category, as determined by OpenAlex or Dimensions. One of: diamond, gold, hybrid, green, bronze, closed. May be null.</td></tr></tbody><tbody><tr><td>pages</td>
+<td>String</td>
+<td>Page numbers for the publication</td></tr></tbody><tbody><tr><td>primary_department</td>
+<td>String</td>
+<td>The primary Stanford department a researcher is affiliated with. A researcher may have multiple affiliations beyond this primary department.</td></tr></tbody><tbody><tr><td>primary_school</td>
+<td>String</td>
+<td>The primary Stanford school a researcher is affiliated with. A researcher may have multiple affiliations beyond this primary school. </td></tr></tbody><tbody><tr><td>pub_year</td>
+<td>Integer</td>
+<td>Year of publication</td></tr></tbody><tbody><tr><td>publisher</td>
+<td>String</td>
+<td>Publisher of the journal in which the publication appears, if applicable, obtained from OpenAlex.</td></tr></tbody><tbody><tr><td>role</td>
+<td>String</td>
+<td>Primary role of the author at Stanford. One of: affiliate, faculty, fellow, msstudent, phdstudent, postdoc, registry, resident, staff, student, other</td></tr></tbody><tbody><tr><td>title</td>
+<td>String</td>
+<td>Title of the publication</td></tr></tbody><tbody><tr><td>types</td>
+<td>String</td>
+<td>Types of publication, normalized to values: Article, Book, Chapter, Correction/Retraction, Dataset, Dissertation, Editorial Material, Other. Types are pipe-delimited when there are multiple.</td></tr></tbody><tbody><tr><td>volume</td>
+<td>String</td>
+<td>Volume of the journal in which the publication appeared, if available</td></tr></tbody></table>
