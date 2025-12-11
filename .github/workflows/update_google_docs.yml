@@ -35,11 +35,12 @@ jobs:
       - name: Open pull request using gh CLI
         if: steps.check.outputs.no_files != 'true'
         run: |
-          gh pr create \
+          PR_NUMBER=$(gh pr create \
             --title "Update google docs" \
             --body "Automated task for updating documentation from google docs" \
             --base main \
-            --head update-google-docs
+            --head update-google-docs)
+          echo "::set-output name=number::$PR_NUMBER"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Trigger Workflow B via workflow_dispatch
@@ -50,5 +51,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/ci.yml/dispatches \
-            -d '{"ref":"main","inputs":{"pr_number":"${{ github.event.pull_request.number }}"}}'
+            -d '{"ref":"main","inputs":{"pr_number":"${{ steps.create_pr.outputs.number }}"}}'
 
