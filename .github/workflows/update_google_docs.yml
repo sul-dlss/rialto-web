@@ -50,5 +50,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/actions/workflows/ci.yml/dispatches \
-            -d '{"ref":"update-google-docs"}'
+            -d '{"ref":"main","inputs":{"pr_number":"${{ github.event.pull_request.number }}"}}'
 
