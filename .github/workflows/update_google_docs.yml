@@ -34,6 +34,7 @@ jobs:
           branch: update-google-docs
       - name: Open pull request using gh CLI
         if: steps.check.outputs.no_files != 'true'
+        id: create_pr
         run: |
           PR_NUMBER=$(gh pr create \
             --title "Update google docs" \
