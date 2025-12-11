@@ -48,7 +48,6 @@ group :development, :test do
 
   gem 'erb_lint', require: false
   gem 'factory_bot_rails'
-  gem 'rspec_junit_formatter' # used by CircleCI
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'rubocop-capybara', require: false
