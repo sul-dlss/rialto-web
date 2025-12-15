@@ -17,7 +17,6 @@ RSpec.describe 'Login' do
         expect(new_user.first_name).to eq(user.first_name)
 
         expect(response).to redirect_to(root_path)
-        expect(jar.signed[:user_id]).to eq(new_user.id)
       end
     end
 
@@ -38,7 +37,6 @@ RSpec.describe 'Login' do
           .and change { user.reload.first_name }.to('New first name')
 
         expect(response).to redirect_to(root_path)
-        expect(jar.signed[:user_id]).to eq(user.id)
       end
     end
   end

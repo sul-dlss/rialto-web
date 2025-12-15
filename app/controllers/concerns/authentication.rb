@@ -38,7 +38,7 @@ module Authentication
   private
 
   def remote_user
-    return ENV.fetch('REMOTE_USER', nil) if Rails.env.development? && cookies[:user_id]
+    return ENV.fetch('REMOTE_USER', nil) if Rails.env.development? && cookies[:logged_in]
 
     request.headers[REMOTE_USER_HEADER]
   end
@@ -54,7 +54,7 @@ module Authentication
   end
 
   def start_new_session?
-    return true if Rails.env.development? && remote_user && cookies[:user_id]
+    return true if Rails.env.development? && remote_user && cookies[:logged_in]
 
     Rails.env.test? && user_attrs[:email_address].present?
   end
@@ -69,9 +69,7 @@ module Authentication
 
   def start_new_session
     # Create or update a user based on the headers provided by Apache.
-    results = User.upsert(user_attrs, unique_by: :email_address) # rubocop:disable Rails/SkipsModelValidations
-    # This cookie will be used to authenticate Action Cable connections.
-    cookies.signed.permanent[:user_id] = { value: results.rows[0][0], httponly: true, same_site: :lax }
+    User.upsert(user_attrs, unique_by: :email_address) # rubocop:disable Rails/SkipsModelValidations
   end
 
   def user_attrs # rubocop:disable Metrics/AbcSize
@@ -105,6 +103,6 @@ module Authentication
   end
 
   def terminate_session
-    cookies.delete(:user_id)
+    cookies.delete(:logged_in)
   end
 end

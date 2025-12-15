@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
     render json: { error: }, status: :unauthorized
   end
 
+  def stanford_access?
+    current_user && allowed_to?(:view?, with: StanfordPolicy)
+  end
+
+  def business_access?
+    current_user && allowed_to?(:view?, with: RestrictedPolicy)
+  end
+
   def mint_jwt_token
     @mint_jwt_token ||= JwtService.encode
   end

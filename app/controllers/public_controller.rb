@@ -40,14 +40,6 @@ class PublicController < ApplicationController
     settings_tabs.to_h.deep_transform_keys(&:to_s).deep_merge(tab_routes)
   end
 
-  def stanford_access?
-    current_user && allowed_to?(:view?, with: StanfordPolicy)
-  end
-
-  def business_access?
-    current_user && allowed_to?(:view?, with: RestrictedPolicy)
-  end
-
   def turbo_frame_id
     "#{@tab_key}-frame"
   end

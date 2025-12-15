@@ -3,12 +3,21 @@
               d-flex justify-content-center"></div>
   <div class="text-body">
       <div class="fw-semibold"><%= alert_heading %></div>
-      <div>
+      <div<% unless current_user %> data-controller="check-login" data-check-login-link-value="<%= login_url(referrer: request.referer || request.fullpath) %>"<% end %>>
           <% if current_user %>
             This page is only available to select users.
             If you would like to request access, please email:  <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu' %>.
           <% else %>
             Log in to access the pages available to you. <%= link_to 'Log in', login_path(referrer: request.referer || request.fullpath), data: { turbo: false } %>
+            <div class="modal" id="modal" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    Your session has timed out. You will be redirected to <%= link_to 'log in', '#', data: { action: 'click->check-login#goImmediatelty' } %> again in 5 seconds.
+                  </div>
+                </div>
+              </div>
+            </div>
           <% end %>
       </div>
   </div>

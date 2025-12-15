@@ -13,8 +13,7 @@ RSpec.describe 'Publications' do
 
       it 'returns unauthorized for no user' do
         get '/download/author'
-        expect(response.body).to eq '{"error":"Not logged in"}'
-        expect(response).to have_http_status(:unauthorized)
+        expect(response).to have_http_status(:redirect)
       end
 
       it 'returns not found' do
@@ -38,7 +37,7 @@ RSpec.describe 'Publications' do
 
       it 'returns unauthorized' do
         get '/download/author'
-        expect(response.body).to eq '{"error":"Unauthorized user"}'
+        expect(response.body).to eq '{"error":"You are not authorized to access this file."}'
         expect(response).to have_http_status(:unauthorized)
       end
 

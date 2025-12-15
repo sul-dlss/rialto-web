@@ -7,7 +7,12 @@ class DownloadsController < ApplicationController
   def index; end
 
   def download
-    authorize! to: :view?, with: RestrictedPolicy
+    return redirect_to download_path(session_timeout: true) unless current_user
+
+    unless business_access?
+      return render status: :unauthorized,
+                    json: { error: 'You are not authorized to access this file.' }
+    end
 
     send_file file.filepath,
               filename: file.filename,
