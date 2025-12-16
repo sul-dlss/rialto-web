@@ -22,6 +22,11 @@ RSpec.describe 'Documentation page' do
       # expect(response.body).to include 'Publications Dashboard'
     end
 
+    it 'returns downloads documentation' do
+      get documentation_url('downloads')
+      expect(response).to have_http_status(:success)
+    end
+
     it 'returns error' do
       expect do
         get documentation_url('publications2')

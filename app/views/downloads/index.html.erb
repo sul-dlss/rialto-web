@@ -1,7 +1,6 @@
 <div class="my-3">
+  <%= render DashboardHeaderComponent.new(title: 'Downloads', link_text: 'Questions about the datasets? Read the documentation', help_url: documentation_url('downloads')) %>
   <% if current_user && allowed_to?(:view?, with: RestrictedPolicy) %>
-    <%= render DashboardHeaderComponent.new(title: 'Downloads', help_url: Settings.dashboard.help_url) %>
-
     <div class="my-2">
       The RIALTO team provides several "flattened" (or denormalized) data files. There are four files available for download below. Each consolidates information from multiple database tables into a single file. Each file is flattened to support a different level of analysis: by publication, by School, by Department, or by Author.
     </div>
