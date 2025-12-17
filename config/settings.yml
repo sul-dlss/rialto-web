@@ -13,9 +13,6 @@ tableau:
   client_secret_value: STAGE_CLIENT_SECRET_VALUE_HERE
   token_expiry_time_seconds: 600
 
-dashboard:
-  help_url: 'https://docs.google.com/document/d/1LohYMtb_AZfTUFDEzovYB0zo-5JBw5i9B8iZSt1feAM/edit?tab=t.0#heading=h.vh65hbsggtq4'
-
 # heading = text that shows up on the tab
 # tableau should be the slug in Tableau
 # the rest of the Tableau url will be created dyamically in the PublicController
@@ -61,6 +58,7 @@ downloads:
   path: '/rialto-data/downloads'
 
 docs:
-  orcid-adoption: 'https://docs.google.com/document/d/e/2PACX-1vQnZ5BuBlDs4rpN7ylIjYwEGO2k-Z1LdqG-TmMLMn30XHA61F4zhtfnSeEy8StKDCF6MihejfZLZnQT/pub'
-  open-access: 'https://docs.google.com/document/d/e/2PACX-1vQY3OF7YgrNupXXgGX1bK5oK2eHJ4Ho9blwBt2EjxxluCeiy8vBIcTmGk3vEPPlw6Zul39Ps3Y_4cLy/pub'
-  publications: 'https://docs.google.com/document/d/e/2PACX-1vRIzrc-kYD7ZK7WmHXkR5D6IV422KNY2dH6WG-ZpRW2HQ6dxWa1a__n1CM1PBxX1qeWA_0a9zw99odk/pub'
+  orcid-adoption: https://docs.google.com/document/d/e/2PACX-1vQnZ5BuBlDs4rpN7ylIjYwEGO2k-Z1LdqG-TmMLMn30XHA61F4zhtfnSeEy8StKDCF6MihejfZLZnQT/pub
+  open-access: https://docs.google.com/document/d/e/2PACX-1vQY3OF7YgrNupXXgGX1bK5oK2eHJ4Ho9blwBt2EjxxluCeiy8vBIcTmGk3vEPPlw6Zul39Ps3Y_4cLy/pub
+  publications: https://docs.google.com/document/d/e/2PACX-1vRIzrc-kYD7ZK7WmHXkR5D6IV422KNY2dH6WG-ZpRW2HQ6dxWa1a__n1CM1PBxX1qeWA_0a9zw99odk/pub
+  downloads: https://docs.google.com/document/d/e/2PACX-1vT08NOnlgLq6J3MAcvpqaZHLubNWZ0JkkgaBukV0GZ8KkVy8RdBFQnvPnPzmezRcW5K1YTO-ZiW2NLm/pub

@@ -12,6 +12,8 @@ class DocumentationController < ApplicationController
       render 'orcid-adoption'
     when 'publications'
       render 'publications'
+    when 'downloads'
+      render 'downloads'
     end
   end
 end
