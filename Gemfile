@@ -85,6 +85,7 @@ end
 # Additional gems
 gem 'action_policy'
 gem 'config'
+gem 'csv'
 gem 'honeybadger'
 gem 'jwt'
 gem 'okcomputer'
