@@ -4,6 +4,8 @@
 
 Web application for viewing RIALTO dashboards.
 
+Test 1.2.3
+
 ## Setup
 
 ```
