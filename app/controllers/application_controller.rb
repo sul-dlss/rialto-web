@@ -41,6 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_turbo_frame
+    return false if is_a?(StaticPagesController)
+
     redirect_to root_path unless turbo_frame_request?
   end
 end
