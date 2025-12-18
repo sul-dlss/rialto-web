@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/sul-dlss/rialto-web/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/sul-dlss/rialto-web/tree/main)
+
 # RIALTO Web App
 
 Web application for viewing RIALTO dashboards.
