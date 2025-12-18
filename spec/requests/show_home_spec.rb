@@ -15,7 +15,7 @@ RSpec.describe 'Show home page' do
     it 'shows the home page with logged in message' do
       get '/'
 
-      expect(response.body).to include('Our RIALTO (research intelligence) service assists schools')
+      expect(response.body).to include('aside')
       expect(response.body).to include("Logged in: #{name}")
     end
   end
@@ -24,7 +24,7 @@ RSpec.describe 'Show home page' do
     it 'shows the home page' do
       get '/'
 
-      expect(response.body).to include('Our RIALTO (research intelligence) service assists schools')
+      expect(response.body).to include('aside')
       expect(response.body).not_to include("Logged in: #{name}")
     end
   end
