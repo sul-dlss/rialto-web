@@ -1,0 +1,54 @@
+name: update_google_docs
+on: 
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update_google_docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Checkout new branch
+        run: git checkout -b "update-google-docs"
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+      - name: harvest Google docs
+        run: bundle exec rake harvest:all
+      - name: Rubocop linter
+        run: bundle exec rubocop
+        if: always()
+      - name: HTML Linter
+        run: bundle exec erb_lint --lint-all --format compact
+        if: always()
+      - name: Rspec tests
+        run: bundle exec rspec
+        if: always()
+      - name: Brakeman
+        run: bin/brakeman
+        if: always()
+      - name: commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add app/views/documentation app/views/downloads
+          git commit -m "update harvested files" -a || echo "no_files=true" >> $GITHUB_OUTPUT
+      - name: push changes
+        if: steps.check.outputs.no_files != 'true'
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: update-google-docs
+      - name: Open pull request using gh CLI
+        if: steps.check.outputs.no_files != 'true'
+        run: |
+          gh pr create \
+            --title "Update google docs" \
+            --body "Automated task for updating documentation from google docs" \
+            --base main \
+            --head update-google-docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
