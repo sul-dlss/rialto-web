@@ -37,6 +37,7 @@
                     class="nav-link logout-dropdown dropdown-toggle"
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
+                    data-logged-in="true"
                     title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
                     Logged in: <%= Current.user.name || Current.user.sunetid %>
                   </button>

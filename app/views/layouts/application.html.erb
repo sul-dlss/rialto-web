@@ -47,9 +47,9 @@
 
     <%= render HeaderComponent.new %>
 
-    <main id="main-container">
+    <main id="main-container" class="mb-auto flex-1 mt-4">
       <%= render FlashComponent.new(flash:) %>
-      <div class="container mb-auto flex-1 mt-4">
+      <div class="container">
         <%= yield %>
       </div>
     </main>

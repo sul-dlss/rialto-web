@@ -8,6 +8,7 @@ class AuthenticationController < ApplicationController
 
   def login
     start_new_session # Creates/updates user and set session cookie.
+    cookies.signed.permanent[:logged_in] = { httponly: true, same_site: :lax }
     redirect_to(params[:referrer].presence || root_url)
   end
 
