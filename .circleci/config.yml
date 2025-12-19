@@ -28,8 +28,16 @@ workflows:
       - ruby-rails/lint:
           name: lint
           context: dlss
+          filters:
+            branches:
+              ignore:
+                - update-google-docs
       - ruby-rails/lint-erb:
           context: dlss
+          filters:
+            branches:
+              ignore:
+                - update-google-docs
       - brakeman
       - ruby-rails/test-rails:
           name: test
@@ -39,3 +47,7 @@ workflows:
             - run:
                 name: Prepare for running specs (install JS dependencies and build assets)
                 command: bin/rake spec:prepare
+          filters:
+            branches:
+              ignore:
+                - update-google-docs

@@ -31,19 +31,20 @@ jobs:
         run: bin/brakeman
         if: always()
       - name: commit files
+        id: commit
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add app/views/documentation app/views/downloads
-          git commit -m "update harvested files" -a || echo "no_files=true" >> $GITHUB_OUTPUT
+          git commit -m "update harvested files" || echo "no_files=true" >> "$GITHUB_OUTPUT"
       - name: push changes
-        if: steps.check.outputs.no_files != 'true'
+        if: steps.commit.outputs.no_files != 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: update-google-docs
       - name: Open pull request using gh CLI
-        if: steps.check.outputs.no_files != 'true'
+        if: steps.commit.outputs.no_files != 'true'
         run: |
           gh pr create \
             --title "Update google docs" \
