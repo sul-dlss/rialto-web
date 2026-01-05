@@ -1,0 +1,44 @@
+<h1>About</h1>
+<div>RIALTO, a research intelligence service run by the Stanford University Libraries, collects, curates, and visualizes data from multiple sources in order to provide insight on Stanford's research output. Through interactive dashboards and downloadable data, Stanford researchers and administrators can explore trends, demonstrate contributions to scholarship, assess compliance with key policies, and make informed decisions about research support services.</div>
+<div class="my-2">
+  <h2>Dashboards</h2>
+  <p>RIALTO currently offers three dashboards, each designed to highlight a different aspect of Stanford’s research activity:</p>
+</div>
+<div class="my-2">
+  <h3>Publications</h3>
+  <p>The Publications dashboard provides an overview of scholarly publishing at Stanford. It helps the university understand publication trends for different research output types, fulfill reporting requirements, and plan services that support scholarly communication.</p>
+  <%= link_to publications_dashboard_path, class: 'link-primary su-underline' do %>
+    <i class="bi bi-box-arrow-up-right me-2"></i>Explore the Publications dashboard
+  <% end %>
+</div>
+<div class="my-2">
+  <h3>Open Access</h3>
+  <p>The Open Access dashboard reports on open access (OA) publishing across Stanford. It enables the university to monitor compliance with OA policies, plan and budget for OA support, and showcase Stanford’s OA achievements.</p>
+  <%= link_to open_access_dashboard_path, class: 'link-primary su-underline' do %>
+    <i class="bi bi-box-arrow-up-right me-2"></i>Explore the Open Access dashboard
+  <% end %>
+</div>
+<div class="my-2">
+  <h3>ORCID iD Adoption</h3>
+  <p>The ORCID iD Adoption dashboard reports on the use of ORCID iDs at Stanford by tracking the integration of Stanford researchers’ ORCID iDs with their SUNet IDs. These insights help monitor progress toward internal and external adoption goals and inform outreach efforts to improve ORCID iD uptake.</p>
+  <%= link_to orcid_adoption_dashboard_path, class: 'link-primary su-underline' do %>
+    <i class="bi bi-box-arrow-up-right me-2"></i>Explore the ORCID iD Adoption dashboard
+  <% end %>
+</div>
+<div class="my-2">
+  <h2>Data</h2>
+  <p>RIALTO aggregates research-related data from multiple sources and APIs. Stanford affiliates can explore, filter, and download this information from the dashboards, and approved users can access full datasets on the <%= link_to 'Downloads page', download_path, class: 'link-primary su-underline' %></p>
+  <p>In order to create a highly precise dataset of publications by Stanford-affiliated researchers, we collect publications associated with an ORCID iD of a Stanford author, where that author has <a href="https://library.stanford.edu/orcid-id">linked their ORCID iD with their SUNet ID.</a> We supplement this dataset with publications approved by a Stanford researcher via their <a href="https://profiles.stanford.edu/">Stanford Profile.</a></p>
+  <p>For more information about how we identify and report Stanford-authored publications, please see the more detailed documentation pages available in the Documentation menu of this site.</p>
+  <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+    <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+    <div class="text-body">
+      <div>Want to be sure your publications are in our datasets? <a href="https://authorize.stanford.edu/orcid/OrcidInit?">Link your ORCID iD to your SUNet ID.</a></div>
+    </div>
+  </div>
+  <p>Consult our ORCID Guide to learn how to create and maintain an ORCID iD record that supports your research activities and professional development.</p>
+</div>
+<div class="my-2">
+  <h2>Support</h2>
+  <p>To learn more about RIALTO and how we can help with your research reporting needs, email our team at <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu' %>.</p>
+</div>

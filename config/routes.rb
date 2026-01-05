@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  root 'home#show'
+  root 'static_pages#home'
+  get '/about', to: 'static_pages#about', as: 'about'
 
   get 'orcid-adoption', to: 'orcid_adoption#show', as: 'orcid_adoption_dashboard'
   get '/orcid_adoption/stanford-overview', to: 'orcid_adoption#stanford_overview',
