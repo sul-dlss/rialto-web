@@ -57,13 +57,6 @@ namespace :harvest do # rubocop:disable Metrics/BlockLength
       html = Nokogiri::HTML(res.body, nil, 'UTF-8')
 
       element = html.at_css('#contents')
-      # Google docs updates it's classes every 5 minutes (when it re-publishes)
-      # So even if the doc isn't update the file will update.
-      # This check removes unnecessary updating of the files unless the text has actually changed
-      same_text = Nokogiri::HTML(File.read(views_path), nil,
-                                 'UTF-8').at_css('.doc-content')&.text&.delete("\n") ==
-                  element.at_css('.doc-content').text.delete("\n")
-      next if same_text
 
       doc_contents = element.to_html +
                      "<div class='last-updated mb-4 fst-italic'>
