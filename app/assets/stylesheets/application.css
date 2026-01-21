@@ -20,6 +20,10 @@
   padding: 0!important;
   margin-bottom: 4rem;
   max-width: 100%!important;
+  /* For some reason google docs have the span have a text decoration of underline and the a have a text-decoration of inherit, which gives a double underline */
+  a {
+    text-decoration: none!important;
+  }
 }
 
 .modal {
