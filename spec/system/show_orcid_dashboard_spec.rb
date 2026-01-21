@@ -16,7 +16,7 @@ RSpec.describe 'Show orcid dashboard pages' do
     it 'shows the orcid dashboard stanford overview viz in tab' do
       visit orcid_adoption_dashboard_path
 
-      expect(page).to have_content('ORCID Adoption Dashboard')
+      expect(page).to have_content('ORCID iD Adoption Dashboard')
       within('#stanford-overview-frame') do
         expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
       end
@@ -62,7 +62,7 @@ RSpec.describe 'Show orcid dashboard pages' do
     it 'shows the orcid dashboard stanford overview viz in tab' do
       visit orcid_adoption_dashboard_path
 
-      expect(page).to have_content('ORCID Adoption Dashboard')
+      expect(page).to have_content('ORCID iD Adoption Dashboard')
       within('#stanford-overview-frame') do
         expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
       end
