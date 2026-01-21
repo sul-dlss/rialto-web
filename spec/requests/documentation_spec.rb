@@ -13,7 +13,7 @@ RSpec.describe 'Documentation page' do
     it 'returns orcid adoption documentation' do
       get documentation_url('orcid-adoption')
       expect(response).to have_http_status(:success)
-      # expect(response.body).to include 'ORCID Adoption Dashboard Documentation'
+      # expect(response.body).to include 'ORCID iD Adoption Dashboard Documentation'
     end
 
     it 'returns publications documentation' do
