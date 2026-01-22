@@ -58,7 +58,15 @@ namespace :harvest do # rubocop:disable Metrics/BlockLength
 
       element = html.at_css('#contents')
 
-      doc_contents = element.to_html +
+      # google sets li, p, header css without qualifliers.
+      # This is messing with CSS on the rest of the page. This only applies the google docs style to .doc-content
+      contents = element.to_html.gsub('<style type="text/css">', '<style type="text/css">.doc-content {').gsub(
+        '</style>', '}</style>'
+      )
+      # clean css to make more readable
+      contents = contents.gsub(');', ");\n").gsub('{', "{\n").gsub('}', "\n}")
+
+      doc_contents = contents +
                      "<div class='last-updated mb-4 fst-italic'>
                         Last updated: #{Time.zone.today.strftime('%B %d, %Y')}
                       </div>\n"
