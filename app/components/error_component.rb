@@ -9,4 +9,8 @@ class ErrorComponent < ViewComponent::Base
 
     'This page is only available to select users.'
   end
+
+  def referrer
+    request.headers['Turbo-Frame'] ? request.referer : request.original_url
+  end
 end
