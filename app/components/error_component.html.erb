@@ -3,12 +3,12 @@
               d-flex justify-content-center"></div>
   <div class="text-body">
       <div class="fw-semibold"><%= alert_heading %></div>
-      <div<% unless current_user %> data-controller="check-login" data-check-login-link-value="<%= login_url(referrer: request.referer || request.fullpath) %>"<% end %>>
+      <div<% unless current_user %> data-controller="check-login" data-check-login-link-value="<%= login_url(referrer:) %>"<% end %>>
           <% if current_user %>
             This page is only available to select users.
             If you would like to request access, please email:  <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu' %>.
           <% else %>
-            Log in to access the pages available to you. <%= link_to 'Log in', login_path(referrer: request.referer || request.fullpath), data: { turbo: false } %>
+            Log in to access the pages available to you. <%= link_to 'Log in', login_path(referrer:), data: { turbo: false } %>
             <div class="modal" id="modal" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-content">
