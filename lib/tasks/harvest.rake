@@ -57,6 +57,10 @@ namespace :harvest do # rubocop:disable Metrics/BlockLength
       html = Nokogiri::HTML(res.body, nil, 'UTF-8')
 
       element = html.at_css('#contents')
+      element.css('img').each do |img|
+        img.remove_attribute('style')
+        img.parent.remove_attribute('style')
+      end
 
       # google sets li, p, header css without qualifliers.
       # This is messing with CSS on the rest of the page. This only applies the google docs style to .doc-content
