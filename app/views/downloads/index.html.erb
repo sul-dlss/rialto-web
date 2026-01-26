@@ -2,7 +2,7 @@
   <%= render DashboardHeaderComponent.new(title: 'Downloads', link_text: 'Questions about the datasets? Read the documentation', help_url: documentation_url('downloads')) %>
   <% if current_user && allowed_to?(:view?, with: RestrictedPolicy) %>
     <div class="my-2">
-      The RIALTO team provides several "flattened" (or denormalized) data files. There are four files available for download below. Each consolidates information from multiple database tables into a single file. Each file is flattened to support a different level of analysis: by publication, by School, by Department, or by Author.
+      The RIALTO team provides several "flattened" (or denormalized) data files. There are four files available for download below. Each consolidates information from multiple database tables into a single file. Each file is flattened to support a different level of analysis: by Publication, by School, by Department, or by Author.
     </div>
 
     <h2 class="mt-4">Publications</h2>
@@ -15,7 +15,7 @@
     </details>
     <%= render DownloadDatasetComponent.new %>
 
-    <h2 class="mt-4">Publications by school</h2>
+    <h2 class="mt-4">Publications by School</h2>
     <div>
       A table where each row is unique by <b>publication</b> and <b>primary school</b>.
       Use this file for School-level aggregating and analysis.
@@ -32,7 +32,7 @@
     </div>
     <%= render DownloadDatasetComponent.new(set: 'school') %>
 
-    <h2 class="mt-4">Publications by department</h2>
+    <h2 class="mt-4">Publications by Department</h2>
     <div>
       A table where each row is unique by <b>publication</b>, <b>primary school</b>, and <b>primary department</b>.
       Use this file for Department-level aggregating and analysis.
@@ -49,7 +49,7 @@
     </div>
     <%= render DownloadDatasetComponent.new(set: 'department') %>
 
-    <h2 class="mt-4">Publications by author</h2>
+    <h2 class="mt-4">Publications by Author</h2>
     <div>
       A table where each row is unique by <b>publication</b> and <b>sunet</b>.
       Use this file for Author-level aggregating and analysis.
