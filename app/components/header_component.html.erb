@@ -1,188 +1,172 @@
 <header>
-      <div class="identity-bar">
-        <div class="container">
-          <a
-            class="su-brand-bar__logo"
-            href="https://www.stanford.edu">
-            Stanford University</a>
-        </div>
+  <div class="identity-bar">
+    <div class="container">
+      <a class="su-brand-bar__logo" href="https://www.stanford.edu">Stanford University</a>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-md fog-light">
+    <div class="container">
+      <a class="mb-0 navbar-brand navbar-logo" href="https://library.stanford.edu" aria-label="Stanford University Libraries"></a>
+      <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#user-util-collapse" data-bs-target="#user-util-collapse" aria-controls="user-util-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="d-md-block d-none">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Feedback', 'mailto:rialto-service@lists.stanford.edu', class: 'nav-link' %>
+          </li>
+          <li class="nav-item dropdown">
+            <% if helpers.current_user.present? %>
+              <button
+                class="nav-link logout-dropdown dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                data-logged-in="true"
+                title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
+                Logged in: <%= Current.user.name || Current.user.sunetid %>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
+              </ul>
+            <% else %>
+              <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
+            <% end %>
+          </li>
+        </ul>
       </div>
-      <nav class="navbar navbar-expand-md fog-light">
-        <div class="container">
-          <a
-            class="mb-0 navbar-brand navbar-logo"
-            href="https://library.stanford.edu">
-            Stanford University Libraries</a>
-          <button
-            class="navbar-toggler navbar-toggler-right collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-bs-toggle="collapse"
-            data-target="#user-util-collapse"
-            data-bs-target="#user-util-collapse"
-            aria-controls="user-util-collapse"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="d-md-block d-none">
-            <ul class="navbar-nav">
+    </div>
+  </nav>
+  <div class="masthead fog-light">
+    <div class="container">
+      <div
+        class="d-flex flex-wrap align-items-end pt-3 pb-1 pb-md-3 gap-2">
+        <div class="d-flex align-items-end gap-2 flex-grow-1">
+          <span class="rosette-logo me-1 align-self-start flex-shrink-0" aria-hidden="true"></span>
+          <div class="me-1 flex-grow-1">
+            <div class="h1 my-0">
+              <%= link_to 'RIALTO', root_path %>
+            </div>
+            <span class="h2 d-block my-1">
+              Research Intelligence at Stanford
+            </span>
+          </div>
+        </div>
+        <div class="navbars ms-md-auto">
+          <nav
+            class="collapse navbar-collapse align-items-start justify-content-md-end navbar-expand-md d-md-flex flex-column flex-md-row"
+            aria-label="browse"
+            id="user-util-collapse">
+            <hr class="d-md-none vw-100 my-0">
+            <ul
+              class="navbar-nav justify-content-md-end gap-0 gap-md-4 w-100 fw-semibold">
               <li class="nav-item">
-                <%= link_to 'Feedback', 'mailto:rialto-service@lists.stanford.edu', class: 'nav-link' %>
+                <a class="nav-link" href="<%= about_path %>">About</a>
               </li>
               <li class="nav-item dropdown">
-                <% if helpers.current_user.present? %>
-                  <button
-                    class="nav-link logout-dropdown dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                    data-logged-in="true"
-                    title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
-                    Logged in: <%= Current.user.name || Current.user.sunetid %>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
-                  </ul>
-                <% else %>
-                  <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
-                <% end %>
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                Dashboards
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'Publications', publications_dashboard_path, class: 'dropdown-item' %>
+                  </li>
+                  <li>
+                    <%= link_to 'Open Access', open_access_dashboard_path, class: 'dropdown-item' %>
+                  </li>
+                  <li>
+                    <%= link_to 'ORCID iD Adoption', orcid_adoption_dashboard_path, class: 'dropdown-item' %>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Downloads', download_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                Documentation
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'Publications', documentation_url('publications'), class: 'dropdown-item' %>
+                  </li>
+                  <li>
+                    <%= link_to 'Open Access', documentation_url('open-access'), class: 'dropdown-item' %>
+                  </li>
+                  <li>
+                    <%= link_to 'ORCID iD Adoption', documentation_url('orcid-adoption'), class: 'dropdown-item' %>
+                  </li>
+                  <li>
+                    <%= link_to 'Downloads', documentation_url('downloads'), class: 'dropdown-item' %>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </div>
-        </div>
-      </nav>
-      <div class="fog-light">
-        <div class="masthead container">
-          <div
-            class="d-flex flex-wrap align-items-end pt-3 pb-1 pb-md-3 gap-2">
-            <div class="d-flex align-items-end gap-2 flex-grow-1">
-              <span class="rosette-logo me-1 align-self-start flex-shrink-0" aria-hidden="true"></span>
-              <div class="me-1 flex-grow-1">
-                <div class="h1 my-0">
-                  <%= link_to 'RIALTO', root_path %>
-                </div>
-                <span class="h4 d-block my-1">
-                  Research Intelligence at Stanford
-                </span>
-              </div>
-            </div>
-            <div class="navbars ms-md-auto">
-              <nav
-                class="collapse navbar-collapse align-items-start justify-content-md-end navbar-expand-md d-md-flex flex-column flex-md-row"
-                aria-label="browse"
-                id="user-util-collapse">
-                <hr class="d-md-none vw-100 my-0">
-                <ul
-                  class="navbar-nav justify-content-md-end gap-0 gap-md-4 w-100 fw-semibold">
-                  <li class="nav-item">
-                    <a class="nav-link" href="<%= about_path %>">About</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                    Dashboards
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <%= link_to 'Publications', publications_dashboard_path, class: 'dropdown-item' %>
-                      </li>
-                      <li>
-                        <%= link_to 'Open Access', open_access_dashboard_path, class: 'dropdown-item' %>
-                      </li>
-                      <li>
-                        <%= link_to 'ORCID iD Adoption', orcid_adoption_dashboard_path, class: 'dropdown-item' %>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <%= link_to 'Downloads', download_path, class: 'nav-link' %>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a
-                      class="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false">
-                    Documentation
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <%= link_to 'Publications', documentation_url('publications'), class: 'dropdown-item' %>
-                      </li>
-                      <li>
-                        <%= link_to 'Open Access', documentation_url('open-access'), class: 'dropdown-item' %>
-                      </li>
-                      <li>
-                        <%= link_to 'ORCID iD Adoption', documentation_url('orcid-adoption'), class: 'dropdown-item' %>
-                      </li>
-                      <li>
-                        <%= link_to 'Downloads', documentation_url('downloads'), class: 'dropdown-item' %>
-                      </li>
-                    </ul>
-                  </li>
+            <hr class="d-md-none vw-100 my-0">
+            <ul class="navbar-nav d-md-none gap-0 w-100">
+              <li class="nav-item">
+                <a
+                  href="#feedback"
+                  class="nav-link"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#feedback">
+                  Feedback</a>
+              </li>
+              <li class="nav-item dropdown">
+              <% if helpers.current_user.present? %>
+                <button
+                  class="nav-link logout-dropdown dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
+                  Logged in: <%= Current.user.name || Current.user.sunetid %>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
                 </ul>
-                <hr class="d-md-none vw-100 my-0">
-                <ul class="navbar-nav d-md-none gap-0 w-100">
-                  <li class="nav-item">
-                    <a
-                      href="#feedback"
-                      class="nav-link"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#feedback">
-                      Feedback</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                  <% if helpers.current_user.present? %>
-                    <button
-                      class="nav-link logout-dropdown dropdown-toggle"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      title="<%= "SUNet: #{Current.user.sunetid} | Groups: #{Current.groups.join(', ')}" %>">
-                      Logged in: <%= Current.user.name || Current.user.sunetid %>
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
-                    </ul>
-                  <% else %>
-                    <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
-                  <% end %>
-                </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+              <% else %>
+                <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
+              <% end %>
+            </li>
+            </ul>
+          </nav>
         </div>
-        <% if current_page?(root_path) # home page hero image %>
-          <div class="d-flex align-items-center justify-content-start home-page-hero" style="background-image: url(<%= hero_image %>);">
-            <div class="container">
-              <div class="container bg-white p-3 rounded mx-0" style="width: 500px; max-width: 100%;  box-shadow: 0px 4px 4px 0px #00000040;">
-                <aside class="row" aria-label="Quick links">
-                  <div class="h4" style="color: var(--stanford-60-black);">Research intelligence dashboards</div>
-                  <div class="col-6">
-                    <p><em>The RIALTO dashboards visualize Stanford publication and research trends. Discover more through these links.</em></p>
-                  </div>
-                  <div class="col-6">
-                    <div class="d-flex flex-column gap-2">
-                      <%= link_to publications_dashboard_path, class: 'su-underline' do %>
-                        <i class="bi bi-box-arrow-up-right me-2"></i>Publications
-                      <% end %>
-                      <%= link_to open_access_dashboard_path, class: 'su-underline' do %>
-                        <i class="bi bi-box-arrow-up-right me-2"></i>Open Access
-                      <% end %>
-                      <%= link_to orcid_adoption_dashboard_path, class: 'su-underline' do %>
-                        <i class="bi bi-box-arrow-up-right me-2"></i>ORCID iD Adoption
-                      <% end %>
-                    </div>
-                </aside>
-              </div>
-            </div>
-          </div>
-        <% end %>
       </div>
-    </header>
+    </div>
+  </div>
+</header>
+<% if current_page?(root_path) # home page hero image %>
+  <div class="d-flex align-items-center justify-content-start home-page-hero" style="background-image: url(<%= hero_image %>);">
+    <div class="container">
+      <div class="container bg-white p-3 rounded mx-0" style="width: 500px; max-width: 100%;  box-shadow: 0px 4px 4px 0px #00000040;">
+        <aside class="row" aria-label="Quick links">
+          <div class="h2" style="color: var(--stanford-60-black);">Research intelligence dashboards</div>
+          <div class="col-6">
+            <p><em>The RIALTO dashboards visualize Stanford publication and research trends. Discover more through these links.</em></p>
+          </div>
+          <div class="col-6">
+            <div class="d-flex flex-column gap-2">
+              <%= link_to publications_dashboard_path, class: 'su-underline' do %>
+                <i class="bi bi-box-arrow-up-right me-2"></i>Publications
+              <% end %>
+              <%= link_to open_access_dashboard_path, class: 'su-underline' do %>
+                <i class="bi bi-box-arrow-up-right me-2"></i>Open Access
+              <% end %>
+              <%= link_to orcid_adoption_dashboard_path, class: 'su-underline' do %>
+                <i class="bi bi-box-arrow-up-right me-2"></i>ORCID iD Adoption
+              <% end %>
+            </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+<% end %>
