@@ -5,66 +5,90 @@
       The RIALTO team provides several "flattened" (or denormalized) data files. There are four files available for download below. Each consolidates information from multiple database tables into a single file. Each file is flattened to support a different level of analysis: by Publication, by School, by Department, or by Author.
     </div>
 
-    <h2 class="mt-4">Publications</h2>
-    <div>
-      A table where each row is unique by <b>publication</b>. Use this file for publication-level aggregating and analysis.
-    </div>
-    <details>
-      <summary><span class="btn btn-link su-underline">View the data fields available in the Publications table</span></summary>
-      <%= render 'publications_data_dictionary' %>
-    </details>
-    <%= render DownloadDatasetComponent.new %>
-
-    <h2 class="mt-4">Publications by School</h2>
-    <div>
-      A table where each row is unique by <b>publication</b> and <b>primary school</b>.
-      Use this file for School-level aggregating and analysis.
-    </div>
-    <details>
-      <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by School table</span></summary>
-      <%= render 'publications_by_school_data_dictionary' %>
-    </details>
-    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
-      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
-      <div class="text-body">
-        <div>If a publication has co-authors from different schools, that publication will appear in multiple rows of the table, once for each different school.</div>
+    <div class="card mt-4">
+      <div class="card-header">
+        <h2 class="card-title mb-0">Publications</h2>
+      </div>
+      <div class="card-body">
+        <div>
+          A table where each row is unique by <b>publication</b>. Use this file for publication-level aggregating and analysis.
+        </div>
+        <details>
+          <summary><span class="btn btn-link su-underline">View the data fields available in the Publications table</span></summary>
+          <%= render 'publications_data_dictionary' %>
+        </details>
+        <%= render DownloadDatasetComponent.new %>
       </div>
     </div>
-    <%= render DownloadDatasetComponent.new(set: 'school') %>
 
-    <h2 class="mt-4">Publications by Department</h2>
-    <div>
-      A table where each row is unique by <b>publication</b>, <b>primary school</b>, and <b>primary department</b>.
-      Use this file for Department-level aggregating and analysis.
-    </div>
-    <details>
-      <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by Department table</span></summary>
-      <%= render 'publications_by_department_data_dictionary' %>
-    </details>
-    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
-      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
-      <div class="text-body">
-        <div>If a publication has co-authors from different departments within the same school, that publication will appear in multiple rows of the table, once for each different school-department combination.</div>
+    <div class="card mt-4">
+      <div class="card-header">
+        <h2 class="card-title mb-0">Publications by School</h2>
+      </div>
+      <div class="card-body">
+        <div>
+          A table where each row is unique by <b>publication</b> and <b>primary school</b>.
+          Use this file for School-level aggregating and analysis.
+        </div>
+        <details>
+          <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by School table</span></summary>
+          <%= render 'publications_by_school_data_dictionary' %>
+        </details>
+        <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+          <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+          <div class="text-body">
+            <div>If a publication has co-authors from different schools, that publication will appear in multiple rows of the table, once for each different school.</div>
+          </div>
+        </div>
+        <%= render DownloadDatasetComponent.new(set: 'school') %>
       </div>
     </div>
-    <%= render DownloadDatasetComponent.new(set: 'department') %>
 
-    <h2 class="mt-4">Publications by Author</h2>
-    <div>
-      A table where each row is unique by <b>publication</b> and <b>sunet</b>.
-      Use this file for Author-level aggregating and analysis.
-    </div>
-    <details>
-      <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by Author table</span></summary>
-      <%= render 'publications_by_author_data_dictionary' %>
-    </details>
-    <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
-      <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
-      <div class="text-body">
-        <div>If a publication has multiple co-authors, that publication will appear in multiple rows of the table, once for each of the co-authors.</div>
+    <div class="card mt-4">
+      <div class="card-header">
+        <h2 class="card-title mb-0">Publications by Department</h2>
+      </div>
+      <div class="card-body">
+        <div>
+          A table where each row is unique by <b>publication</b>, <b>primary school</b>, and <b>primary department</b>.
+          Use this file for Department-level aggregating and analysis.
+        </div>
+        <details>
+          <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by Department table</span></summary>
+          <%= render 'publications_by_department_data_dictionary' %>
+        </details>
+        <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+          <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+          <div class="text-body">
+            <div>If a publication has co-authors from different departments within the same school, that publication will appear in multiple rows of the table, once for each different school-department combination.</div>
+          </div>
+        </div>
+        <%= render DownloadDatasetComponent.new(set: 'department') %>
       </div>
     </div>
-    <%= render DownloadDatasetComponent.new(set: 'author') %>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <h2 class="card-title mb-0">Publications by Author</h2>
+      </div>
+      <div class="card-body">
+        <div>
+          A table where each row is unique by <b>publication</b> and <b>sunet</b>.
+          Use this file for Author-level aggregating and analysis.
+        </div>
+        <details>
+          <summary><span class="btn btn-link su-underline">View the data fields available in the Publications by Author table</span></summary>
+          <%= render 'publications_by_author_data_dictionary' %>
+        </details>
+        <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
+          <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+          <div class="text-body">
+            <div>If a publication has multiple co-authors, that publication will appear in multiple rows of the table, once for each of the co-authors.</div>
+          </div>
+        </div>
+        <%= render DownloadDatasetComponent.new(set: 'author') %>
+      </div>
+    </div>
   <% else %>
     <%= render ErrorComponent.new %>
   <% end %>
