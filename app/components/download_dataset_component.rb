@@ -10,15 +10,19 @@ class DownloadDatasetComponent < ViewComponent::Base
   attr_reader :set
 
   def call
+    file_link + file_size + last_updated
+  end
+
+  private
+
+  def file_link
     tag.div(class: 'd-flex flex-row align-items-center gap-3') do
       link_to helpers.download_set_path(set), data: { turbo: false }, aria: { label: "Download #{file.filename}" },
                                               class: 'btn btn-primary my-2' do
         tag.i(class: 'bi bi-download me-2') + file.filename
-      end + file_size + last_updated
+      end
     end
   end
-
-  private
 
   def file
     DownloadFile.new(set:)
