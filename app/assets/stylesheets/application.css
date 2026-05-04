@@ -16,6 +16,12 @@
   background-position: center;
 }
 
+.rialto-beta-badge {
+  background-color: #007C92; /* Stanford Lagunita Base */
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+
 .doc-content {
   padding: 0!important;
   margin-bottom: 4rem;
