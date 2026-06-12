@@ -27,6 +27,11 @@ RSpec.describe 'Documentation page' do
       expect(response).to have_http_status(:success)
     end
 
+    it 'returns organization documentation' do
+      get documentation_url('organization-data')
+      expect(response).to have_http_status(:success)
+    end
+
     it 'returns error' do
       expect do
         get documentation_url('publications2')

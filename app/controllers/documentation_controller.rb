@@ -4,7 +4,7 @@
 class DocumentationController < ApplicationController
   skip_verify_authorized
 
-  def show
+  def show # rubocop:disable Metrics/MethodLength
     case params[:faq]
     when 'open-access'
       render 'open-access'
@@ -14,6 +14,8 @@ class DocumentationController < ApplicationController
       render 'publications'
     when 'downloads'
       render 'downloads'
+    when 'organization-data'
+      render 'organization-data'
     end
   end
 end
