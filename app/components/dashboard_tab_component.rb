@@ -2,11 +2,12 @@
 
 # Show the tabs above the dashboard embed
 class DashboardTabComponent < ApplicationComponent
-  def initialize(tabs:)
+  def initialize(tabs:, dashboard: nil)
     super()
     @tabs = tabs
+    @dashboard = dashboard
   end
-  attr_reader :tabs
+  attr_reader :tabs, :dashboard
 
   def selected_tab
     params[:tab] || tabs.keys.first

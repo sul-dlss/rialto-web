@@ -27,5 +27,11 @@ RSpec.describe 'Show home page' do
       expect(response.body).to include('aside')
       expect(response.body).not_to include("Logged in: #{name}")
     end
+
+    it 'renders login link with analytics tracking attributes' do
+      get '/'
+
+      expect(response.body).to include('data-action="click-&gt;analytics#trackLogin"')
+    end
   end
 end

@@ -18,8 +18,11 @@ class DownloadDatasetComponent < ViewComponent::Base
   private
 
   def file_link
-    link_to helpers.download_set_path(set), data: { turbo: false }, aria: { label: "Download #{file.filename}" },
-                                            class: 'btn btn-primary' do
+    link_to helpers.download_set_path(set),
+            data: { turbo: false, controller: 'analytics', action: 'click->analytics#trackDownload',
+                    analytics_file_name_value: file.filename },
+            aria: { label: "Download #{file.filename}" },
+            class: 'btn btn-primary' do
       tag.i(class: 'bi bi-download me-2') + file.filename
     end
   end

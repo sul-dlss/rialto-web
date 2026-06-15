@@ -1,4 +1,6 @@
-<ul class="nav nav-tabs mt-3" id="dashboard-tabs" role="tablist" data-controller="tab-url">
+<ul class="nav nav-tabs mt-3" id="dashboard-tabs" role="tablist"
+    data-controller="tab-url analytics"
+    data-analytics-dashboard-value="<%= dashboard %>">
     <% tabs.each do |tab_slug, tab_data| %>
         <li class="nav-item" role="presentation">
             <button class="nav-link <%= 'active' if tab_slug == selected_tab %>"
@@ -6,7 +8,8 @@
                 data-bs-target="#<%= "#{tab_slug}-pane" %>" type="button"
                 role="tab" aria-controls="<%= "#{tab_slug}-pane" %>"
                 aria-selected="<%= 'active' if tab_slug == selected_tab %>"
-                data-tab-name="<%= tab_slug %>" data-action="click->tab-url#updateUrl">
+                data-tab-name="<%= tab_slug %>"
+                data-action="click->tab-url#updateUrl click->analytics#trackVisualization">
                 <%= tab_data['heading'] %>
             </button>
         </li>
