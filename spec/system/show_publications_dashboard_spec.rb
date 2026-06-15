@@ -13,6 +13,13 @@ RSpec.describe 'Show orcid dashboard pages' do
       sign_in(user)
     end
 
+    it 'renders tabs with analytics tracking attributes' do
+      visit publications_dashboard_path
+
+      expect(page).to have_css('[data-analytics-dashboard-value="Publications Dashboard"]')
+      expect(page).to have_css('button[data-action*="analytics#trackVisualization"]')
+    end
+
     it 'shows the orcid dashboard stanford overview viz in tab' do
       visit publications_dashboard_path
 

@@ -8,7 +8,9 @@
             This page is only available to select users.
             If you would like to request access, please email:  <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu' %>.
           <% else %>
-            Log in to access the pages available to you. <%= link_to 'Log in', login_path(referrer:), data: { turbo: false } %>
+            Log in to access the pages available to you.
+            <%= link_to 'Log in', login_path(referrer:),
+                        data: { turbo: false, controller: 'analytics', action: 'click->analytics#trackLogin' } %>
             <div class="modal" id="modal" tabindex="-1">
               <div class="modal-dialog">
                 <div class="modal-content">

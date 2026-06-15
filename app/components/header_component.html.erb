@@ -29,7 +29,9 @@
                 <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
               </ul>
             <% else %>
-              <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
+              <%= link_to 'Login', login_path(referrer: request.original_url),
+                          class: 'nav-link',
+                          data: { controller: 'analytics', action: 'click->analytics#trackLogin' } %>
             <% end %>
           </li>
         </ul>
@@ -138,7 +140,9 @@
                   <li><%= link_to 'Logout', logout_path, class: 'dropdown-item' %></li>
                 </ul>
               <% else %>
-                <%= link_to 'Login', login_path(referrer: request.original_url), class: 'nav-link' %>
+                <%= link_to 'Login', login_path(referrer: request.original_url),
+                            class: 'nav-link',
+                            data: { controller: 'analytics', action: 'click->analytics#trackLogin' } %>
               <% end %>
             </li>
             </ul>

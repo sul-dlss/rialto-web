@@ -63,6 +63,13 @@ RSpec.describe 'Publications' do
         expect(response.body).to include('aria-label="Download publications.zip"')
       end
 
+      it 'renders download links with analytics tracking attributes' do
+        get '/download'
+        expect(response.body).to include('data-controller="analytics"')
+        expect(response.body).to include('data-action="click-&gt;analytics#trackDownload"')
+        expect(response.body).to include('data-analytics-file-name-value="publications.zip"')
+      end
+
       it 'returns success' do
         get '/download/pubs'
         expect(response).to have_http_status(:success)
