@@ -1,7 +1,7 @@
 <turbo-frame id="<%= turbo_frame_id %>">
     <% if authorized? %>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 tableau-embed-container">
                 <tableau-viz
                     id='<%= "tableau-viz-#{turbo_frame_id}" %>'
                     class='justify-content-center'
