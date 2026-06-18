@@ -2,9 +2,8 @@
     <% if authorized? %>
         <div class="row">
             <div class="col-12">
-                <script type='module' src='<%= Settings.tableau.base_url %>/javascripts/api/tableau.embedding.3.latest.min.js'></script>
                 <tableau-viz
-                    id='tableau-viz'
+                    id='<%= "tableau-viz-#{turbo_frame_id}" %>'
                     class='justify-content-center'
                     src='<%= embed_url %>'
                     <% if token && !Rails.env.local? %> token='<%= token %>'<% end %>
