@@ -16,7 +16,7 @@ RSpec.describe 'Show open access pages' do
     it 'shows the open access stanford overview viz in tab' do
       visit open_access_dashboard_path
 
-      expect(page).to have_content('Open Access Dashboard')
+      expect(page).to have_text('Open Access Dashboard')
       within('#stanford-overview-frame') do
         expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
       end
@@ -68,7 +68,7 @@ RSpec.describe 'Show open access pages' do
     it 'shows the open access stanford overview viz in tab' do
       visit open_access_dashboard_path
 
-      expect(page).to have_content('Open Access Dashboard')
+      expect(page).to have_text('Open Access Dashboard')
       within('#stanford-overview-frame') do
         expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
       end
@@ -79,7 +79,7 @@ RSpec.describe 'Show open access pages' do
       within('#department-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
+      expect(page).to have_text('This page is only available to Stanford-affiliated users.')
     end
 
     it 'does not show the open access school overview viz in tab' do
@@ -87,7 +87,7 @@ RSpec.describe 'Show open access pages' do
       within('#school-overview-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
+      expect(page).to have_text('This page is only available to Stanford-affiliated users.')
     end
 
     it 'does not show the open access school details viz in tab' do
@@ -95,7 +95,7 @@ RSpec.describe 'Show open access pages' do
       within('#school-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
-      expect(page).to have_content('This page is only available to Stanford-affiliated users.')
+      expect(page).to have_text('This page is only available to Stanford-affiliated users.')
     end
   end
 end
