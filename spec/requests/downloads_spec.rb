@@ -32,7 +32,7 @@ RSpec.describe 'Publications' do
       it 'returns page info' do
         get '/downloads'
         expect(response).to have_http_status(:success)
-        expect(response.body).to include 'This page is only available to select users.'
+        expect(response.body).to include 'This page is only available to approved users.'
       end
 
       it 'returns unauthorized' do

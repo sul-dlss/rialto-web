@@ -31,7 +31,7 @@ RSpec.describe 'Show orcid dashboard pages' do
 
     it 'does not show the orcid dashboard individual researchers viz in tab' do
       visit orcid_adoption_dashboard_path(tab: 'researcher-details')
-      expect(page).to have_text('This page is only available to select users.')
+      expect(page).to have_text('This page is only available to approved users.')
       within('#researcher-details-frame') do
         expect(page).to have_no_css('#tableau-viz')
       end
