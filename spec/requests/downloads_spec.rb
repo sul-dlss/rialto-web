@@ -6,18 +6,18 @@ RSpec.describe 'Publications' do
   describe 'GET /index' do
     context 'when user is not logged in' do
       it 'returns login alert' do
-        get '/download'
+        get '/downloads'
         expect(response).to have_http_status(:success)
         expect(response.body).to include 'This page is only available to Stanford-affiliated users.'
       end
 
       it 'returns unauthorized for no user' do
-        get '/download/author'
+        get '/downloads/author'
         expect(response).to have_http_status(:redirect)
       end
 
       it 'returns not found' do
-        get '/download/made_up'
+        get '/downloads/made_up'
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -30,19 +30,19 @@ RSpec.describe 'Publications' do
       end
 
       it 'returns page info' do
-        get '/download'
+        get '/downloads'
         expect(response).to have_http_status(:success)
         expect(response.body).to include 'This page is only available to select users.'
       end
 
       it 'returns unauthorized' do
-        get '/download/author'
+        get '/downloads/author'
         expect(response.body).to eq '{"error":"You are not authorized to access this file."}'
         expect(response).to have_http_status(:unauthorized)
       end
 
       it 'returns failure' do
-        get '/download/made_up'
+        get '/downloads/made_up'
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe 'Publications' do
       end
 
       it 'returns page info' do
-        get '/download'
+        get '/downloads'
         expect(response).to have_http_status(:success)
         expect(response.body).to include 'publications_by_department.zip'
         expect(response.body).to include 'Size: 420 KB (uncompressed)'
@@ -64,19 +64,19 @@ RSpec.describe 'Publications' do
       end
 
       it 'renders download links with analytics tracking attributes' do
-        get '/download'
+        get '/downloads'
         expect(response.body).to include('data-controller="analytics"')
         expect(response.body).to include('data-action="click-&gt;analytics#trackDownload"')
         expect(response.body).to include('data-analytics-file-name-value="publications.zip"')
       end
 
       it 'returns success' do
-        get '/download/pubs'
+        get '/downloads/pubs'
         expect(response).to have_http_status(:success)
       end
 
       it 'returns not found' do
-        get '/download/made_up'
+        get '/downloads/made_up'
         expect(response).to have_http_status(:not_found)
       end
     end
