@@ -7,7 +7,7 @@
                 id="<%= "#{tab_slug}-tab" %>" data-bs-toggle="tab"
                 data-bs-target="#<%= "#{tab_slug}-pane" %>" type="button"
                 role="tab" aria-controls="<%= "#{tab_slug}-pane" %>"
-                aria-selected="<%= 'active' if tab_slug == selected_tab %>"
+                aria-selected="<%= 'true' if tab_slug == selected_tab %>"
                 data-tab-name="<%= tab_slug %>"
                 data-action="click->tab-url#updateUrl click->analytics#trackVisualization">
                 <%= tab_data['heading'] %>
