@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'nokogiri'
 require 'net/http'
 require 'openssl'
 require 'csv'
@@ -45,37 +44,7 @@ namespace :harvest do # rubocop:disable Metrics/BlockLength
   desc 'harvest google docs'
   task google_docs: :environment do
     Settings.docs.each do |path, doc|
-      uri = URI(doc)
-      views_path = Rails.root.join('app', 'views', 'documentation', "#{path}.html.erb")
-
-      File.write(views_path, '') unless views_path.exist?
-
-      res = Net::HTTP.start(uri.host, uri.port, use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE) do |http|
-        http.get(uri.request_uri)
-      end
-
-      html = Nokogiri::HTML(res.body, nil, 'UTF-8')
-
-      element = html.at_css('#contents')
-      element.css('img').each do |img|
-        img.remove_attribute('style')
-        img.parent.remove_attribute('style')
-      end
-
-      # google sets li, p, header css without qualifliers.
-      # This is messing with CSS on the rest of the page. This only applies the google docs style to .doc-content
-      contents = element.to_html.gsub('<style type="text/css">', '<style type="text/css">.doc-content {').gsub(
-        '</style>', '}</style>'
-      )
-      # clean css to make more readable
-      contents = contents.gsub(');', ");\n").gsub('{', "{\n").gsub('}', "\n}")
-
-      doc_contents = contents +
-                     "<div class='last-updated mb-4 fst-italic'>
-                        Last updated: #{Time.zone.today.strftime('%B %d, %Y')}
-                      </div>\n"
-
-      views_path.write(doc_contents)
+      GoogleDocHarvester.new(slug: path, url: doc).call
     end
   end
 end
