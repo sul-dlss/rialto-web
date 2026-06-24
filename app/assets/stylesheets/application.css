@@ -40,3 +40,9 @@
 .modal {
   padding-top: 35%;
 }
+
+.tableau-embed-container tableau-viz {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
