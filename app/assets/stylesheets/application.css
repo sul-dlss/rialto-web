@@ -16,6 +16,12 @@
   background-position: center;
 }
 
+.home-page-hero-card {
+  width: 530px;
+  max-width: 100%; 
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .rialto-beta-badge {
   background-color: #007C92; /* Stanford Lagunita Base */
   font-size: 1rem;
