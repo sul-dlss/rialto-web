@@ -19,7 +19,8 @@
 .rialto-beta-badge {
   background-color: #007C92; /* Stanford Lagunita Base */
   font-size: 1rem;
-  padding: 0.3rem;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  font-weight: 600;
 }
 
 .doc-content {
