@@ -42,19 +42,29 @@
     </div>
   </div>
 </div>
+
 <div class="my-4">
   <h2>Data</h2>
-  <p>RIALTO aggregates research-related data from multiple sources and APIs. Stanford affiliates can explore, filter, and download this information from the dashboards, and approved users can access full datasets on the <%= link_to 'Downloads page', download_path, class: 'su-underline' %>.</p>
-  <p>In order to create a highly precise dataset of publications by Stanford-affiliated researchers, we collect publications associated with an ORCID iD of a Stanford author, where that author has <%= link_to 'linked their ORCID iD with their SUNet ID', 'https://library.stanford.edu/orcid-id', class: 'su-underline' %>.  We supplement this dataset with publications approved by a Stanford researcher via their <%= link_to 'Stanford Profile', 'https://profiles.stanford.edu/', class: 'su-underline' %>.</p>
-  <p>For more information about how we identify and report Stanford-authored publications, please see the more detailed documentation pages available in the Documentation menu of this site.</p>
-  <div role="alert" class="alert alert-note d-flex shadow-sm align-items-center mt-3">
-    <div role="img" aria-label="Note icon" class="bi bi-exclamation-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
-    <div class="text-body">
-      <div>Want to be sure your publications are in our datasets? <%= link_to 'Link your ORCID iD to your SUNet ID', 'https://authorize.stanford.edu/orcid/OrcidInit?', class: 'su-underline' %>.</div>
+    <p>RIALTO aggregates research-related data from multiple sources and APIs. Stanford affiliates can explore, filter, and download this information from the dashboards, and approved users can access full datasets on the <%= link_to 'Downloads page', download_path, class: 'su-underline' %>.</p>
+    <p>To create a highly precise dataset of publications by Stanford-affiliated researchers, we collect publications associated with an ORCID iD of a Stanford author, where that author has <%= link_to 'connected their ORCID iD with their SUNet ID', 'https://authorize.stanford.edu/orcid/OrcidInit?', class: 'su-underline' %>.  We supplement this dataset with publications approved by a Stanford researcher via their <%= link_to 'Stanford Profile', 'https://profiles.stanford.edu/', class: 'su-underline' %>. For more information on how we identify and report Stanford-authored publications, please see the Documentation section of this site.</p>
+
+    <div role="alert" class="alert alert-info d-flex shadow-sm align-items-center">
+      <div role="img" aria-label="Info icon" class="bi bi-info-circle-fill fs-3 me-3 align-self-center d-flex justify-content-center"></div>
+      <div class="text-body">
+        <div class="fw-semibold">Want to be sure your publications are in our datasets?</div>
+        <div>
+          <ul class="mb-1 mt-1">
+            <li>Check that you have <%= link_to 'connected your ORCID iD to your SUNet ID', 'https://authorize.stanford.edu/orcid/OrcidInit?', class: 'su-underline' %>.</li>
+            <li>Consult our <%= link_to 'ORCID Guide', 'https://guides.library.stanford.edu/orcid', class: 'su-underline' %> to learn how to create and maintain an ORCID iD record that supports your research activities and professional development.</li>
+          </ul>
+        </div>
+        <div>
+          <a href="https://library.stanford.edu/orcid-id" class="alert-link"><i class="bi bi-box-arrow-up-right me-1"></i>Learn more about ORCID iDs</a>
+        </div>
+      </div>
     </div>
-  </div>
-  <p>Consult our <%= link_to 'ORCID Guide', 'https://guides.library.stanford.edu/orcid', class: 'su-underline' %> to learn how to create and maintain an ORCID iD record that supports your research activities and professional development.</p>
 </div>
+
 <div class="my-4">
   <h2>Support</h2>
   <p>To learn more about RIALTO and how we can help with your research reporting needs, email our team at <%= link_to 'rialto-service@lists.stanford.edu', 'mailto:rialto-service@lists.stanford.edu', class: 'su-underline' %>.</p>
