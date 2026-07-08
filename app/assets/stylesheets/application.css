@@ -41,3 +41,8 @@
 .modal {
   padding-top: 35%;
 }
+
+/* Beta feedback notice */
+.landing-beta-notice {
+  background-color: var(--stanford-fog-light);
+}

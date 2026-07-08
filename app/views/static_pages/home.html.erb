@@ -1,9 +1,23 @@
-<div class="my-3">
-  <h1>Introduction</h1>
+<div class="py-4">
+  <div class="row gy-4 gx-4 gx-xl-5">
 
-  <p>RIALTO, a research intelligence service run by the Stanford University Libraries, collects, curates, and visualizes data about Stanford scholarship.</p>
+    <div class="col-sm-6 col-lg-8">
+      <h1 class="visually-hidden">Introduction</h1>
+      <p class="fw-light fs-5">RIALTO is a research intelligence service run by the Stanford University Libraries. We collect, curate, and visualize data about Stanford scholarship.</p>
 
-  <p>Information about research outputs demonstrates contributions to the scholarly enterprise, enables impactful targeting of services, and simplifies reporting and assessment. However, compiling data related to research is challenging, requiring access to multiple data sources, analysis skills, and specialized knowledge of research policies and data practices. By taking a systematic approach to assembling information on Stanford research activity, RIALTO provides campus stakeholders with efficient access to information on publications and other research outputs through interactive dashboards, reducing the need for local data collection.</p>
+      <p>Information about research outputs demonstrates contributions to the scholarly enterprise, enables impactful targeting of services, and simplifies reporting and assessment. However, compiling data related to research is challenging, requiring access to multiple data sources, analysis skills, and specialized knowledge of research policies and data practices. By taking a systematic approach to assembling information on Stanford research activity, RIALTO provides campus stakeholders with efficient access to information on publications and other research outputs through interactive dashboards, reducing the need for local data collection.</p>
 
-  <p>Learn more about RIALTO and our services on the <%= link_to 'About', about_path, class: 'su-underline' %> page.</p>
+      <p>Learn more about RIALTO and our services on the <%= link_to 'About', about_path, class: 'su-underline' %> page.</p>
+    </div>
+
+    <div class="col-sm-6 col-lg-4">
+      <div class="landing-beta-notice d-flex flex-column gap-3 p-4 rounded-1">
+        <h2 class="visually-hidden">Beta notice</h2>
+        <p class="mb-0">
+          <span class="fw-semibold">RIALTO is currently in beta.</span> We welcome feedback from the Stanford community. Please contact us with any questions or comments about the RIALTO service. Your suggestions for improvement will help refine our data collection pipeline, shape future dashboard development, and ensure RIALTO supports the needs of campus stakeholders.
+        </p>
+        <%= link_to 'Send feedback', 'mailto:rialto-service@lists.stanford.edu', class: 'btn btn-outline-primary btn-compact align-self-start' %>
+      </div>
+    </div>
+  </div>
 </div>
