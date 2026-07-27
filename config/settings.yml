@@ -1,5 +1,5 @@
 authorization_workgroup_names:
-  rialto: 'sul:rialto'
+  rialto: 'sul:rialto-business'
 
 email_suffix: '@stanford.edu'
 
@@ -18,10 +18,10 @@ tableau:
 # the rest of the Tableau url will be created dyamically in the PublicController
 tabs:
   open_access:
-    stanford-overview: 
+    stanford-overview:
       heading: Stanford Overview
       tableau: StanfordOverview
-    school-overview: 
+    school-overview:
       heading: School Overview
       tableau: SchoolOverview
     school-details:
@@ -50,7 +50,7 @@ tabs:
     school-details:
       heading: School Details
       tableau: SchoolDetails
-    department-details: 
+    department-details:
       heading: Department Details
       tableau: DepartmentDetails
 
