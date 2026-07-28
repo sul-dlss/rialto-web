@@ -68,6 +68,9 @@ module Authentication
   end
 
   def start_new_session
+    # Ensure group memberships are refreshed from headers after re-authentication.
+    session.delete('groups')
+
     # Create or update a user based on the headers provided by Apache.
     User.upsert(user_attrs, unique_by: :email_address) # rubocop:disable Rails/SkipsModelValidations
   end
@@ -103,6 +106,7 @@ module Authentication
   end
 
   def terminate_session
+    reset_session
     cookies.delete(:logged_in)
   end
 end
