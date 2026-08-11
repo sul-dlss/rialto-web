@@ -18,28 +18,28 @@ RSpec.describe 'Show open access pages' do
 
       expect(page).to have_text('Open Access Dashboard')
       within('#stanford-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
     it 'shows the open access schools and departments viz in tab' do
       visit open_access_dashboard_path(tab: 'department-details')
       within('#department-details-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}DepartmentDetails\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}DepartmentDetails?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
     it 'does show the open access school overview viz in tab' do
       visit open_access_dashboard_path(tab: 'school-overview')
       within('#school-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
     it 'does show the open access school details viz in tab' do
       visit open_access_dashboard_path(tab: 'school-details')
       within('#school-details-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolDetails\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolDetails?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
   end
@@ -55,7 +55,7 @@ RSpec.describe 'Show open access pages' do
     it 'shows the open access school overview viz in tab' do
       visit open_access_dashboard_path(tab: 'school-overview')
       within('#school-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}SchoolOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe 'Show open access pages' do
 
       expect(page).to have_text('Open Access Dashboard')
       within('#stanford-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
