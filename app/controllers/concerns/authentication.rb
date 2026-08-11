@@ -65,6 +65,9 @@ module Authentication
 
   def set_current_groups
     Current.groups ||= groups_from_session
+    return unless authenticated?
+
+    Rails.logger.info("Shibboleth reports user #{remote_user} in workgroups: #{request.headers[USER_GROUPS_HEADER]}")
   end
 
   def start_new_session
