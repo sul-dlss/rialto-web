@@ -81,6 +81,8 @@ Tableau dashboards can be embedded using the `DashboardEmbedComponent`.  If the 
 
 ## Tests
 
+Use Ruby 4.0.7 for development and testing.
+
 All of the below checks are part of the default Rake task, and so will run if you call `bin/rake`.
 
 You can run individual checks with the following commands:
