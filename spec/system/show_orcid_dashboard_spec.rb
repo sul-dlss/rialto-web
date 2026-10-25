@@ -18,14 +18,14 @@ RSpec.describe 'Show orcid dashboard pages' do
 
       expect(page).to have_text('ORCID iD Adoption Dashboard')
       within('#stanford-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
     it 'shows the orcid dashboard schools and departments viz in tab' do
       visit orcid_adoption_dashboard_path(tab: 'department-details')
       within('#department-details-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}DepartmentDetails\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}DepartmentDetails?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 
@@ -49,7 +49,7 @@ RSpec.describe 'Show orcid dashboard pages' do
     it 'shows the orcid dashboard individual researchers viz in tab' do
       visit orcid_adoption_dashboard_path(tab: 'researcher-details')
       within('#researcher-details-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}ResearcherDetails\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}ResearcherDetails?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
   end
@@ -64,7 +64,7 @@ RSpec.describe 'Show orcid dashboard pages' do
 
       expect(page).to have_text('ORCID iD Adoption Dashboard')
       within('#stanford-overview-frame') do
-        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview\"]")
+        expect(page).to have_css("#tableau-viz[src=\"#{tableau_url}StanfordOverview?_ts=#{Time.zone.now.to_i}\"]")
       end
     end
 

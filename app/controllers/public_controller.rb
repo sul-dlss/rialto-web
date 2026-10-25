@@ -45,7 +45,8 @@ class PublicController < ApplicationController
   end
 
   def embed_url
-    "#{Settings.tableau.base_url}#{Settings.tableau.dashboard_base_path}#{tableau_group}/#{tableau_view_name}"
+    "#{Settings.tableau.base_url}#{Settings.tableau.dashboard_base_path}" \
+      "#{tableau_group}/#{tableau_view_name}?_ts=#{Time.zone.now.to_i}"
   end
 
   def tableau_view_name
