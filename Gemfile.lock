@@ -474,7 +474,7 @@ DEPENDENCIES
   action_policy
   bootsnap
   brakeman
-  capistrano-maintenance (~> 1.2)
+  capistrano-maintenance
   capistrano-passenger
   capistrano-rails
   capistrano-shell
@@ -491,7 +491,7 @@ DEPENDENCIES
   jwt
   okcomputer
   propshaft
-  puma (>= 5.0)
+  puma
   rails (~> 8.1.0)
   rspec-rails
   rspec_junit_formatter
@@ -509,7 +509,7 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
-  sqlite3 (>= 2.1)
+  sqlite3
   stimulus-rails
   thruster
   turbo-rails
